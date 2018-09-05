@@ -1,0 +1,101 @@
+
+   <app-header></app-header> <!-- top widget-->
+   <app-top-panel  [page]="'mentor'"  [mentees]=menteecount  [title]="'Overall mentees Performance Progress'" [inprogress]=inprogress [notestarted]=notstarted [completed]=completed  [totalgoals]=totalgoals [firstName]=firstName [lastName]=lastName [email]=email [profileImage]=profileImage></app-top-panel> 
+
+
+   <!-- <div class="top-widget">
+    <div class="container left-side-col">
+        <div class="row">
+            <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 page-title">
+                        <h1>DASHBOARD</h1>
+                    </div>
+                    <div class="col-4 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <div class="menteelist">
+                            <span>{{menteelists|count }}</span>
+                            <span> mentees</span>
+                        </div>
+                    </div>
+                    <div class="col-4 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <div class="goals-details">
+                            <span> {{totalgoals}}</span>
+                            <span> GOALS Assigned</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            <app-performance-progress [achieved]=completed [inprogress]=inProgress [notestarted]=notstarted [totalgoals]=totalgoals [title]="'Overall mentees Performance Progress'" class="col-sm-12 col-md-5 col-lg-5 col-xl-5"></app-performance-progress>
+      
+        </div>
+    </div>
+</div> -->
+<!-- top widget-->
+
+<!--filter-->
+<div class="sub-heading">
+        <div class="container left-side-col">
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-left">
+                    <span class="sub-heading-title">My mentees</span> </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-right">
+                    <div class="filter">
+                        <input [(ngModel)]="searchText" type="search" placeholder="Search"> </div>
+                        <button class="approval" data-toggle="modal" data-target="#approval"><i class="far fa-eye"></i> Approval</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end Filter-->
+    <div class="container em-list">
+        <div class="row left-side-col">
+                                                        <div class="m-list-col" *ngFor="let listItem of menteelists | emfilter:searchText">
+                                                        <div class="m-list" [routerLink]="['/menteeinfo/'+listItem.id]">
+                                                            <div class="m-list-top">
+                                                                <div class="e-image">
+                                                                    <img alt="profile" *ngIf="listItem.profileImage" class="img-fluid emlist-profile-img" [src]="listItem.profileImage">
+                                                                    <img alt="profile" *ngIf="listItem.profileImage== null" class="img-fluid emlist-profile-img"  src="/assets/images/profile-placeholder.jpg">
+                                                                </div>
+                                                                <div class="e-details">
+                                            
+                                                                    <div class="e-details-top">
+                                                                        <span class="e-details-name" data-toggle="tooltip" title="{{listItem.name}}"> {{listItem.firstName |toCapitalize}} {{listItem.lastName |toCapitalize }}</span>
+                                                                        <!-- <span class="e-details-designation"> {{listItem.email}}</span> -->
+                                                                    </div>
+                                                                    <div class="e-details-bottom">
+                                                                        <div class="e-details-goals">
+                                                                            <span class="e-details-goal-count">{{listItem.goals | keyandvalue:'totalGoals'}}</span>
+    
+                                                                            <span class="e-details-goal-label"> Goals</span>
+                                            
+                                                                        </div>
+                                                                        <div class="e-details-discussion">
+                                            
+                                                                            <span class="e-details-discussion-count">{{listItem.discussions}}</span>
+                                                                            <span class="e-details-discussion-label"> Discussion</span>
+                                                                        </div>
+                                                                    </div>
+                                            
+                                                                </div>
+                                                            </div>
+                                                            <div class="m-list-bottom">
+                                      
+                                                                    <app-pro2 [achieved]="listItem.goals | keyandvalue:'completed'" [inprogress]="listItem.goals | keyandvalue:'inProgress'" [notestarted]="listItem.goals | keyandvalue:'notStarted'" [totalgoals]=totalgoals [title]="'Performance progress bar'"></app-pro2>
+                                                                     
+                                                            </div>
+                                                        </div>
+                                                    </div>
+    
+        </div>
+    </div>
+    
+                        <!-- Modal -->
+                        <div class="modal right fade"  id="approval" tabindex="-1" role="dialog" aria-labelledby="actions">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                    
+                                        <app-approval (refresh)="getgoals()"></app-approval>
+                                   </div><!-- modal-content -->
+                                </div><!-- modal-dialog -->
+                            </div><!-- modal -->

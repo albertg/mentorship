@@ -1,0 +1,62 @@
+<!-- <div class="approvels">
+  <h1> All approval</h1>
+  <ul class="approvel-list">
+    <li *ngFor="let listItem of listofapproval">
+      {{listItem.goalDescription}}
+      <ul>
+        <li *ngFor="let actionsItem of listItem.actions">
+          {{ actionsItem.actionText}} {{ actionsItem.actionStatus.statusName}}
+          <button (click)="updateapproval(actionsItem.id,'approved')"> approved</button>
+          <button (click)="updateapproval(actionsItem.id,'rejected')"> rejected</button>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+ -->
+
+
+<div class="approvel">
+    <h1>
+        Action approvals</h1>
+    <div class="approvels-list">
+        <ul class="main-list">
+            <li class="approvels-lists" *ngFor="let listItem of listofapproval">
+                <div class="dots">
+                    <div class="do"> </div>
+                    <div class="line"> </div>
+                </div>
+                <div class="approvels-container">
+                    <div class="date"> {{listItem.createdAt}} </div>
+                    <div class="approvels menor">
+                        <p>  {{listItem.goalDescription}}</p>
+                        <ul class="subllist">
+                            <li *ngFor="let actionsItem of listItem.actions;let i = index">
+                             
+                              <div class="message"> 
+                                 {{ actionsItem.actionText}}
+                                
+                                </div>
+                                <div class="count btns"> 
+                                    <button class="re wow fadeInRight animated" (click)="updateapproval(actionsItem.id,'approved')" title="approvel"> <i class="fas fa-thumbs-up"></i> </button>
+                                    <button class="app wow fadeInRight animated" (click)="updateapproval(actionsItem.id,'rejected')" title="rejected"> <i class="fas fa-thumbs-down"></i> </button>
+
+                                </div>
+                                <!-- <div class="btns  wow fadeInRight animated">
+                                    <button class="app wow fadeInRight animated" (click)="updateapproval(actionsItem.id,'approved')" title="approvel"> <i class="fas fa-thumbs-up"></i> </button>
+                                    <button class="re wow fadeInRight animated" (click)="updateapproval(actionsItem.id,'rejected')" title="rejected"> <i class="fas fa-thumbs-down"></i> </button>
+                                    </div> -->
+                              
+                            </li>
+                          </ul>
+                    </div>
+                    
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<div class="error-message" *ngIf="showerror"> There are no approvals pending </div> 

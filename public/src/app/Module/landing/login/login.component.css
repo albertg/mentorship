@@ -1,0 +1,44 @@
+.mentorLoginDiv {
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: center;
+    color: #333333
+}
+
+input.form-control {
+    height: 44px;
+    border-radius: 22px;
+    background-color: #ffffff;
+    border: solid 1px #e2e2e2;
+    width: 100%;
+    line-height: 1.47;
+  text-align: left;
+  color: #999999;
+  font-size: 0.9rem;
+}
+
+.input-group {
+    display: table !important;
+    padding: 1em !important;
+}
+
+.error-message {
+    color: rgb(197, 2, 2);
+    text-transform: capitalize;
+}
+
+.login-btn {
+    background-color: #499a63;
+    text-align: left;
+    color: #ffffff;
+    font-size: 0.9rem;
+    padding: 10px 41px;
+}

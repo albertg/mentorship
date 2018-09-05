@@ -1,0 +1,57 @@
+
+.progress-bar-chart {
+  
+}
+
+.progress-bar-chart p {
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    margin-bottom: 0px;
+    font-size: 12px;
+    color: #7ec951;
+}
+
+.progress {
+    height: 10px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 0px !important;
+    background-color: #f3f1f1;
+    margin-top: 13px;
+}
+.progress-bar-chart {
+    padding-top: 10px;
+}
+.progress-bar-chart-label {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    margin-top: 8px;
+    margin-right: 5px;
+}
+
+.progress-bar-chart-label li {
+    list-style: none;
+    font-size: 0.6rem;
+    width: 35%;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.progress-bar-chart-label li span {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.progress-bar-chart-label li:after {
+    content: "";
+    display: block;
+    width: 47px;
+    height: 7px;
+    margin-right: 5px;
+}

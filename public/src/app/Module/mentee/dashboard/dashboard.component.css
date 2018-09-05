@@ -1,0 +1,362 @@
+.top-widget {
+    background-color: #fff;
+	padding: 23px 0px 23px;
+	box-shadow: -3px 0px 7px 0 rgba(19, 19, 19, 0.2);
+}
+
+.page-title {
+	padding-top: 0.7rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.page-title h1 {
+    font-size: 1.6rem;
+    font-weight: 700
+}
+
+.progress-bar-chart {
+    padding-left: 4rem;
+}
+
+.progress-bar-chart p {
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333333;
+    margin-bottom: 0px;
+}
+
+.progress {
+    height: 41px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 0px !important;
+    background-color: #fff;
+    margin-top: 13px;
+}
+
+.progress-bar-chart-label {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    margin-top: 1.78rem;
+    margin-right: 1rem;
+}
+
+.progress-bar-chart-label li {
+    list-style: none;
+    margin-right: 21px;
+    font-size: 0.6rem;
+    width: 24.6%;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.progress-bar-chart-label li span {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.progress-bar-chart-label li:after {
+    content: "";
+    display: inline-block;
+    width: 47px;
+    height: 7px;
+    margin-right: 5px;
+}
+
+.discussions-box {
+    text-align: right;
+	background-image: url('/assets/images/discussion.svg');
+	height: 47px;
+    background-repeat: no-repeat;
+
+}
+
+.discussions-box span {
+	display: block;
+    text-align: left;
+    width: 67%;
+	float: right;
+	font-weight: 600;
+	text-align: left;
+	color: #333333;
+}
+
+.discussions-box span:nth-child(1) {
+	font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 16px;
+}
+
+.discussions-box span:nth-last-child(1) {
+	font-size: 0.8rem;
+    line-height: 27px;
+    text-transform: uppercase;
+    letter-spacing: 2.4px;
+}
+
+.goals-details{
+	text-align: right;
+	background-image: url('/assets/images/goals.svg');
+	height: 47px;
+    background-repeat: no-repeat;
+}
+
+.goals-details span {
+	display: block;
+    text-align: left;
+    width: 72%;
+	float: right;
+	font-weight: 600;;
+	text-align: left;
+	color: #333333;
+}
+
+.goals-details span:nth-child(1) {
+	font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 16px;
+}
+
+.goals-details span:nth-last-child(1) {
+	font-size: 0.8rem;
+    line-height: 27px;
+    text-transform: uppercase;
+    letter-spacing: 2.4px;
+}
+
+
+.filter {
+    float: right;
+color: #2a7bae;
+font-weight: 300;
+font-size: 0.9rem;
+}
+
+.add-goals{
+    width: 226px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: #4f7dd8;
+  border: none aliceblue;
+  color: #fff;
+}
+
+  .goals-list{
+
+  }
+.goals-list-items{ 
+    height: 220px;
+    mix-blend-mode: undefined;
+    background-color: #ffffff;
+    border: solid 1px #eeeeee;padding: 0px 19px 19px 15px;
+    position: relative;
+}
+
+.goals-list-top{
+
+    display: block;
+    overflow: hidden;
+}
+
+.post-date{
+font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: right;
+  color: #999999;
+padding: 10px 0px;
+}
+
+.goals-list-center{display: block;padding: 10px 0px;}
+.goals-list-center p{
+
+    /*! font-size: ; */
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #999999;
+}
+
+.goals-list-bottom{
+
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    bottom: 26px;
+    width: 96%;
+}
+.period{
+
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #999999;
+    display: block;
+}
+ .period-term{
+    background-image: linear-gradient(to right, #aece56, #46b750 52%, #258366), linear-gradient(#333333, #333333);
+        font-size: 16px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    text-align: left;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.discussions{
+    
+}
+.discussions button{ 
+    width: 100px;
+  height: 25px;
+  border-radius: 12.5px;
+  background-color: #ffffff;
+  border: solid 1px #4f7dd8;
+   font-size: 11px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.45;
+  letter-spacing: normal;
+  text-align: left;
+  color: #4f7dd8;
+}
+
+.actions{ margin-right: 10px;}
+
+.actions button{ 
+    width: 100px;
+  height: 25px;
+  border-radius: 12.5px;
+  background-color: #ffffff;
+  border: solid 1px #3ba657;
+   font-size: 11px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.45;
+  letter-spacing: normal;
+  text-align: left;
+  color: #3ba657;
+}
+.goals-item-list{ margin-bottom:10px }
+.goals-item-list:nth-child(even){
+  padding-left: 5px
+}
+.goals-item-list:nth-child(odd){
+  padding-right: 5px
+}
+
+.count {
+    margin-right: 6px;
+}
+
+.em-profile{
+
+        width: 80px;
+        height: 80px;
+        background-color: #ffffff;
+        border: solid 1px #cccccc;
+        border-radius: 100px;
+
+}
+
+/******************************************************************************************************* */
+/*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+* Get free snippets on bootpen.com
+*******************************/
+/* 
+.modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 470px;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+        -ms-transform: translate3d(0%, 0, 0);
+         -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+           
+}
+
+.modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+    right: 0;
+    border: none !important; 
+    border-radius: 0px !important; 
+}
+#goals .modal-content {
+    border: none !important; 
+    border-radius: 0px !important; 
+}
+
+.modal.right.fade .modal-dialog{
+    right: 0;
+    -webkit-transform: translate3d(0%, 0, 0);
+        -ms-transform: translate3d(0%, 0, 0);
+         -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+
+}
+
+.modal.right.fade .modal-dialog .modal-content{
+
+padding: 30px;
+} */
+
+.profileinfo-email{
+    font-size: 13px;
+    display: block;
+    color: #8a8383;
+    margin-bottom: 4px;
+}
+
+.profileinfo-mentor{
+
+    font-size: 13px;
+    display: block;
+    color: #8a8383;
+    margin-bottom: 4px;
+ }
+ .status.shortterm{ 
+    background-color: #e2c41b;
+ }
+ .status.mediumterm{ 
+    background-color: #e85118;
+ }
+ .status.longterm{ 
+    background-color: #5ec050;
+ }
+ .status{height: 25px;
+    color: #fff;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    padding: 4px 14px;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 500;
+    display: table;
+  }

@@ -1,0 +1,61 @@
+<app-header>
+  </app-header> <!-- top widget-->
+  <!-- <app-top-panel [page]="'admin'"  [userrole]='userrole' [mentees]=menteecount [title]="'Overall Mentees Performance Progress'" [inprogress]=inprogress [notestarted]=notstarted
+      [completed]=completed [totalgoals]=totalgoals [firstName]=title [lastName]=lastName [email]=email [profileImage]=profileImage></app-top-panel>
+   -->
+      <app-top-panel [page]="'admin'"  [firstName]=title ></app-top-panel>
+  
+  
+  <!--filter-->
+  <div class="sub-heading">
+      <div class="container left-side-col">
+          <div class="row">
+              <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-left">
+                  <!-- <span class="sub-heading-title">{{title}}</span>  -->
+                </div>
+              <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-right">
+                  <!-- <div class="filter">
+                      <input [(ngModel)]="searchText" type="search" placeholder="Search"> </div>
+  
+              </div> -->
+          </div>
+      </div>
+  </div>
+  <!--end Filter-->
+
+  <div class="container em-list">
+      <div class="row left-side-col">
+          <!-- [routerLink]="['/menteeinfo/'+listItem.id]" <div class="m-list-col" *ngFor="let listItem of menteelists | emfilter:searchText">
+                                                     -->
+          <div class="m-list-col wow fadeInRight animated" *ngFor="let listItem of list | emfilter:searchText">
+              <div class="m-list">
+                  <div class="m-list-top">
+                      <div class="e-image">
+                              <div *ngIf="listItem.profileImage ; else notShow">
+                                      <img (click)="redirect(listItem.id)" alt="profile" *ngIf="listItem.profileImage!='null'" class="img-fluid emlist-profile-img" [src]="listItem.profileImage"> 
+                                    </div>
+                                    
+                                    <ng-template #notShow>
+                                          <img (click)="redirect(listItem.id)" alt="profile" class="img-fluid emlist-profile-img" src="/assets/images/profile-placeholder.jpg">
+                                    </ng-template>
+                          <!-- <img alt="profile" *ngIf="listItem.profileImage" class="img-fluid emlist-profile-img" [src]="listItem.profileImage">                        
+                          <img alt="profile" *ngIf="listItem.profileImage==''" class="img-fluid emlist-profile-img" src="/assets/images/profile-placeholder.jpg">
+                       -->
+                      </div>
+                      <div class="e-details">
+                          <div class="e-details-top">
+                              <span (click)="redirect(listItem.id)"  class="e-details-name" data-toggle="tooltip" title="{{listItem.lastName | toCapitalize}} {{listItem.lastName | toCapitalize}}">{{listItem.firstName | toCapitalize}} {{listItem.lastName | toCapitalize}}</span>
+                              
+                              <span class="e-details-designation"> {{listItem.roles[0].roleName | toCapitalize}}</span>
+                          </div>
+                   
+  
+                      </div>
+                    
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="error-message" *ngIf="showerror"> No members have been added</div> 
+  </div>

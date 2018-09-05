@@ -1,0 +1,40 @@
+<div class="add-discussions">
+<template *ngIf="userrole=='mentee'"> 
+    <h1>Record discussions </h1>
+    <div class="discussions-form">
+        <form #mentoringdiscussion="ngForm" (ngSubmit)="mentoring(mentoringdiscussion.value)">
+            <textarea name="discussiontopic" placeholder="ENTER  YOUR  POINTS HERE" required ngModel> </textarea>
+            <button type="submit" class="discussions-btn savebtn"> Save</button>
+
+        </form>
+    </div>
+
+</template>
+    <div class="mentoring-discussion">
+        <h1>
+            Discussions</h1>
+        <div class="mentoring-discussion-list">
+            <ul>
+                <li class="discussion-lists wow fadeInUp animated" *ngFor="let listItem of list">
+                    <div class="dots">
+                        <div class="do"> </div>
+                        <div class="line"> </div>
+                    </div>
+                    <div class="discussions-container">
+                        
+                        <div class="discussions menor">
+                                <div class="date"> {{listItem.createdAt |dateFormat}} </div>
+                            <p> {{listItem.discussion}}</p>
+                        </div>
+
+                        <!-- <button *ngIf="userrole=='mentee'" class="delete-discussions" (click)="delete(listItem.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button> -->
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="error-message" *ngIf="showerror"> No discussions have been recorded  </div> 
+
+
+    </div>
+</div>

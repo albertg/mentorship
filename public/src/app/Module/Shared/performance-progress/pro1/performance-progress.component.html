@@ -1,0 +1,29 @@
+<div class="progress-bar-chart">
+    <p><!-- Overall Mentees Performance Progress- -->{{title}}</p>
+ 
+    <div class="progress">
+        <div class="progress-bar progress-bar-achieved" data-toggle="tooltip" title="f" role="progressbar"
+        [style.width.%]="completed | percentage:totalgoals">
+
+        </div>
+        <div class="progress-bar progress-bar-in-progress" data-toggle="tooltip" title="f" role="progressbar"
+        [style.width.%]="inprogress| percentage:totalgoals">
+
+        </div>
+        <div class="progress-bar progress-bar-not-started" data-toggle="tooltip" title="" role="progressbar"
+        [style.width.%]="notestarted | percentage:totalgoals">
+
+        </div>
+    </div>
+    <ul class="progress-bar-chart-label">
+        <li class="label-achieved">
+            <!-- {{completed | percentage:totalgoals}} -->
+            <span> {{completed}} </span> Achieved</li>
+        <li class="label-in-progress">
+            <!-- {{inprogress| percentage:totalgoals}} -->
+            <span>{{inprogress}}</span>In Progress</li>
+        <li class="label-not-started">
+            <!-- {{notestarted | percentage:totalgoals}} -->
+            <span>{{notestarted}}</span>Not Started</li>
+    </ul>
+</div>

@@ -1,0 +1,32 @@
+<div class="top-row">
+  <div class="assign-title">
+    Assign mentor
+    <span>You can select any one mentor </span> </div>
+  <button (click)="addmentor()"> Assign</button>
+  <input [(ngModel)]="searchText" type="search" placeholder="Search">
+</div>
+
+<ul class="mentee-list">
+  <li class="mentee-list-opctions" *ngFor="let listItem of assmentorlist | emfilter:searchText">
+    <div class="col-itmes">
+      <div *ngIf="listItem.profileImage ; else notShow">
+        <img alt="profile" *ngIf="listItem.profileImage!='null'" class="img-fluid emlist-profile-img" [src]="listItem.profileImage">
+      </div>
+
+      <ng-template #notShow>
+        <img alt="profile" class="img-fluid emlist-profile-img" src="/assets/images/profile-placeholder.jpg">
+      </ng-template>
+    </div>
+    <div class="col-itmes mentee-list-deatails">
+      <span title="{{listItem.firstName}} {{listItem.lastName}}">{{listItem.firstName |toCapitalize}} {{listItem.lastName |toCapitalize }}</span>
+      <!-- <span> {{listItem.email}}</span> -->
+    </div>
+    <div class="col-itmes">
+      <label class="mentee-list-checkbox">
+        <input type="radio"  name="mentors" (change)="changeevent(listItem.id)" [value]="listItem.id" ngModel>
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  </li>
+
+</ul>

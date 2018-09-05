@@ -1,0 +1,98 @@
+.m-list-col{
+    width: 230px;
+    max-height: 251px;
+    background-color: #ffffff;
+    border: solid 1px #eeeeee;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .m-list-col:hover{box-shadow: 0px 8px 10px 0 rgba(19, 19, 19, 0.3)}
+  .e-image{
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    border: 1px solid #ccc;
+    float: left;
+  }
+  .e-image img{ width: 40px;
+    height: 40px;
+    border-radius: 100px;}
+  
+  .e-details-name{
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.23;
+    text-align: left;
+    color: #333333;
+    display: block;
+  }
+  .e-details-designation{
+    font-size: 12px;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #867f7f;
+    font-weight: 400;
+  }
+  .e-details{ float: left;width: 77%;/*! border: 1px solid #ccc; */padding-left: 10px;}
+  .e-details-top{ margin-bottom: 10px; white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;}
+  .e-details-bottom{ display: flex;margin-bottom: 10px; opacity: 0;}
+  .e-details-goal-count,.e-details-discussion-count{
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.89;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333333;
+    display: block;
+  }
+  .e-details-goal-label,.e-details-discussion-label{
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333333;}
+  
+  .e-details-btn button{
+    border-radius: 12.5px;
+    background-color: #ffffff;
+    border: solid 1px #4f7dd8;
+    font-size: 11px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4f7dd8;
+    padding: 5px;
+  }
+  .e-details-goals,.e-details-discussion{ width: 50%}
+
+
+  .filter{ float: right}
+.filter input{
+  width: 226px;
+  height: 36px;
+  border-radius: 18px;
+  background-color: #ffffff;
+  border: solid 1px #cccccc;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: italic;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: left;
+  color: #999999;
+}
+  

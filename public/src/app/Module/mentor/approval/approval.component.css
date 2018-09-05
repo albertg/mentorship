@@ -1,0 +1,162 @@
+.approvel h1 {
+    font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.8;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333333;
+}
+
+.approvels-lists .dots {
+    height: 100%;
+    position: absolute;
+    left: 4px;
+    /*&:before {
+                          content: " ";
+                          display: block;
+                          position: absolute;
+                          background: black;
+                          width: 40px;
+                          left: 100%;
+                          top: calc(50% - 2px);
+                      }*/
+}
+
+.approvels-lists .dots .do {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #6ec351;
+    ;
+}
+
+.approvels-lists .dots .line {
+    height: 100%;
+    width: 3px;
+    border-radius: 2.5px;
+    background-color: #6ec351;
+    position: relative;
+    left: 0px;
+    top: -8px;
+}
+
+.approvels-list ul {
+    margin: 0px;
+    padding: 0px;
+    display: table;
+    width: 100%;
+}
+
+.approvels-lists {
+    list-style: none;
+    /*! display: table; */
+    overflow: hidden;
+    min-height: 116px;
+    width: 100%;
+    margin: 15px 0px;
+}
+
+.date {
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #999999;
+}
+
+.approvels {
+    /* padding: 10px; */
+}
+
+.approvels p {
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333333;
+    margin-bottom: 7px;
+}
+
+.approvels.menor {
+    border-bottom: solid 2px #d6eabe;
+}
+
+.approvels.metee {
+    background-color: #f8fff6;
+    border: solid 1px #d6eabe;
+}
+
+.approvels-container {
+    position: relative;
+}
+
+.subllist {
+    padding-left: 10px !important;
+}
+
+.subllist li {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    margin-bottom: 6px;
+    cursor: pointer;
+    min-height: 36px;
+    padding-top: 10px;
+}
+.subllist li:nth-last-child(1){
+    border: none !important;
+  }
+.count {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.message {
+    font-size: 13px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333333;
+    width: 80%;
+}
+
+.subllist li:hover .btns {
+    display: block;
+}
+
+.btns {
+    text-align: center;
+    width: 100%;
+    padding: 4px 0px;
+    height: 100%;
+    width: 20%;
+}
+
+.btns button {
+    width: 28px;
+    height: 28px;
+    color: #fff8f8;
+    margin: 0px 0px;
+    border-radius: 100px;
+    border: none;
+}
+
+.btns .app {
+    background-color: #c10606;
+}
+
+.btns .re {
+    background-color: #076d05;
+}

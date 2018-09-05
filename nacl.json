@@ -1,0 +1,18 @@
+[
+    {
+        "group":"admin",
+        "permissions":[{
+                "resource":"*",
+                "methods":"*",
+                "action":"allow"
+        }]        
+    },
+    {
+        "group":"practicehead",
+        "permissions":[{
+            "resource":"",
+            "methods":"",
+            "action":""
+        }]
+    }
+]

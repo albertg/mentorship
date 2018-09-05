@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HM Mentor</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+ <script src="https://use.fontawesome.com/9d451ba646.js"></script>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+   <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+ 
+  </head>
+<body>
+  <app-root></app-root>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+<script src="../assets/js/script.js"></script>
+<script>
+$(document).ready(function() {
+   
+    $('.navigation__link').bind('click', function(e) {
+            e.preventDefault(); // prevent hard jump, the default behavior
+
+            var target = $(this).attr("href"); // Set the target as variable
+
+            // perform animated scrolling by getting top-position of target-element and set it as scroll target
+            $('html, body').stop().animate({
+                    scrollTop: $(target).offset().top
+            }, 600, function() {
+                    location.hash = target; //attach the hash (#jumptarget) to the pageurl
+            });
+
+            return false;
+    });
+
+ 
+
+});
+
+$(window).scroll(function() {
+    var scrollDistance = $(window).scrollTop();
+
+       // Show/hide menu on scroll
+       if (scrollDistance >= 590) {
+        
+        $('#mainNav').addClass("stickyheader wow fadeIn animated ")
+        $('#mainNav').removeClass("fadeOut");
+        // $('#mainNav').fadeIn("fast")
+ 
+         //	$('nav').fadeIn("fast");
+     } else {
+       // $('#mainNav').fadeOut("fast") ;
+        $('#mainNav').removeClass("stickyheader fadeIn ");
+        $('#mainNav').addClass(" wow fadeOut animated")
+        
+          
+    }
+
+    // Assign active class to nav links while scolling
+    $('.page-section').each(function(i) {
+            if ($(this).position().top <= scrollDistance) {
+                    $('.navigation a.active').removeClass('active');
+                    $('.navigation a').eq(i).addClass('active');
+            }
+    });
+}).scroll();
+</script>
+
+</body>
+</html>

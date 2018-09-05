@@ -1,0 +1,90 @@
+<!--filter <app-assign-mentor></app-assign-mentor>-->
+
+<div class="sub-heading">
+    <div class="container left-side-col">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-right">
+                <div class="filter">
+                    <input [(ngModel)]="searchText" type="search" placeholder="Search"> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--end Filter-->
+
+<div class="container em-list">
+    <div class="row left-side-col">
+        <!-- [routerLink]="['/menteeinfo/'+listItem.id]" <div class="m-list-col" *ngFor="let listItem of menteelists | emfilter:searchText">
+                                                   -->
+        <div class="m-list-col wow fadeInRight animated" *ngFor="let listItem of menteelists | emfilter:searchText">
+            <div class="m-list">
+                <div class="m-list-top">
+                    <div class="e-image">
+                            <div *ngIf="listItem.profileImage ; else notShow">
+                                    <img (click)="redirect(listItem.id)" alt="profile" *ngIf="listItem.profileImage!='null'" class="img-fluid emlist-profile-img" [src]="listItem.profileImage"> 
+                                  </div>
+                                  
+                                  <ng-template #notShow>
+                                        <img (click)="redirect(listItem.id)" alt="profile" class="img-fluid emlist-profile-img" src="/assets/images/profile-placeholder.jpg">
+                                  </ng-template>
+                        <!-- <img alt="profile" *ngIf="listItem.profileImage" class="img-fluid emlist-profile-img" [src]="listItem.profileImage">                        
+                        <img alt="profile" *ngIf="listItem.profileImage==''" class="img-fluid emlist-profile-img" src="/assets/images/profile-placeholder.jpg">
+                     -->
+                    </div>
+                    <div class="e-details">
+                        <div class="e-details-top">
+                            <span (click)="redirect(listItem.id)"  class="e-details-name" data-toggle="tooltip" title="{{listItem.lastName | toCapitalize}} {{listItem.lastName | toCapitalize}}">{{listItem.firstName | toCapitalize}} {{listItem.lastName | toCapitalize}}</span>
+                            <!-- <span class="e-details-designation"> {{listItem.email}}</span> -->
+                        </div>
+                        <div class="e-details-bottom">
+                            <div class="e-details-goals">
+                                <span class="e-details-goal-count">40</span>
+                                <span class="e-details-goal-label"> Goals</span>
+                            </div>
+                            <div class="e-details-discussion">
+                                <span class="e-details-discussion-count">20</span>
+                                <span class="e-details-discussion-label"> Discussion</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="e-details-bottom-action">
+                        <div class="mentor-info" *ngIf="listItem.mentor">
+                            <label> Mentor</label>
+                            <span>{{listItem.mentor.firstName | toCapitalize}} {{listItem.mentor.lastName | toCapitalize}}</span> 
+                            <!-- <span>{{listItem.mentor.email}}</span> -->
+
+                        </div>
+
+                        <div class="e-details-btn" *ngIf="!listItem.mentor">
+                                <label> Mentor not assigned</label>
+                            <button type="button"  data-toggle="modal"  (click)="getmid(listItem.id)" data-target="#assignMentor">
+                                <i class="fa fa-eye" aria-hidden="true"></i> Assign mentor
+                            </button>
+                        </div>
+                    </div>
+                    <div class="pramote"> 
+                            <input (change)="promote($event)" type="checkbox" value="{{listItem.id}}">
+                            <label> Promote as mentor</label> 
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div id="assignMentor" class="modal right fade sidepanel" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <app-assign-mentor (refreshdata)='refreshchaild()' [menteeid]=mid  [assmentorlist]=mentorlist> </app-assign-mentor>
+            </div>
+           
+        </div>
+    </div>
+</div>
+<!--END  -->

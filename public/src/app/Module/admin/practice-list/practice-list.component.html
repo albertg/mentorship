@@ -1,0 +1,92 @@
+<app-header>
+</app-header> <!-- top widget-->
+<!-- <app-top-panel [page]="'admin'"  [userrole]='userrole' [mentees]=menteecount [title]="'Overall Mentees Performance Progress'" [inprogress]=inprogress [notestarted]=notstarted
+    [completed]=completed [totalgoals]=totalgoals [firstName]="'admin dashboard'" [lastName]=lastName [email]=email [profileImage]=profileImage></app-top-panel> -->
+
+    <app-top-panel [page]="'admin'"  [userrole]='userrole'  
+   [firstName]="'admin dashboard'" ></app-top-panel>
+
+
+<!--filter-->
+<div class="sub-heading">
+    <div class="container left-side-col">
+        <div class="row">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-left">
+                <span class="sub-heading-title">All Practices</span> </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-right">
+                <button data-toggle="modal" data-target="#practice" class="practice"> <i class="fa fa-plus" aria-hidden="true"></i>
+                    New practice</button>
+                <!-- <div class="filter">
+                    <input [(ngModel)]="searchText" type="search" placeholder="Search"> </div>
+
+            </div> -->
+        </div>
+    </div>
+</div>
+<!--end Filter-->
+<div class="container pr-list">
+    <div class="row left-side-col">
+        <div class="m-list-col wow fadeInRight animated " *ngFor="let listItem of list">
+     
+            <div class="p-list">
+          <div class="title" [routerLink]="['/practice/'+listItem.name+'/'+listItem.id]"> {{listItem.name}} </div>
+          <div class="practice-head"> 
+              <!-- <label> practice Head </label> -->
+     <div *ngIf="rename(listItem.practiceHead) ; else notShow">
+            <span> {{listItem.practiceHead.firstName  | toCapitalize}} {{listItem.practiceHead.lastName  | toCapitalize}} </span> 
+              
+        </div>
+
+        <ng-template #notShow>
+                <button (click)="getpid(listItem.id)" data-toggle="modal" data-target="#addpractice" class="addpractice"> <i class="fa fa-plus" aria-hidden="true"></i>
+                    Assign practice head  </button>
+                
+                </ng-template>
+
+
+            
+                    
+        </div>
+          <div class="practice-members">   
+<span>  {{listItem.practiceMembers | count}} Members</span>
+                <button  (click)="getpid(listItem.id)" data-toggle="modal" data-target="#members" class="members"> <i class="fa fa-plus" aria-hidden="true"></i>
+                    Add practice members</button>
+          </div>
+            </div>
+       
+        </div>
+
+
+
+        <!-- Modal -->
+        <div class="modal right fade sidepanel" id="practice" tabindex="-1" role="dialog" aria-labelledby="practice">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <app-add-practice (refreshdata)="refresh()"> </app-add-practice>
+                </div><!-- modal-content -->
+            </div><!-- modal-dialog -->
+        </div><!-- modal -->
+
+
+           <!-- Modal -->
+           <div class="modal right fade sidepanel" id="addpractice" tabindex="-1" role="dialog" aria-labelledby="addpractice">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <app-add-new-practice-head  (refreshdata)="refresh()" [practicid]=pid> </app-add-new-practice-head>
+                    </div><!-- modal-content -->
+                </div><!-- modal-dialog -->
+            </div><!-- modal -->
+
+             <!-- Modal -->
+           <div class="modal right fade sidepanel" id="members" tabindex="-1" role="dialog" aria-labelledby="members">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                     <app-add-new-members  (refreshdata)="refresh()" [practicid]=pid></app-add-new-members>
+                    </div><!-- modal-content -->
+                </div><!-- modal-dialog -->
+            </div><!-- modal -->
+
+    </div>
+
+    <div class="error-message" *ngIf="showerror"> No practices have been added</div> 
+</div>

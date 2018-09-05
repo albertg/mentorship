@@ -1,0 +1,260 @@
+.stickyheader{ position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    
+    margin-top: 0px !important;
+    z-index: 9;
+}
+.stickyheader +div+.content {
+    padding-top: 120px;
+  }
+#section-1 {
+    padding-bottom: 0px;
+    background-size: 47%;
+    background-position: left;
+    background-image: url('../../../../assets/images/graphic@3x.png');
+    background-repeat: no-repeat;
+    display: block;
+    overflow: hidden;
+    min-height: 629px
+    
+    
+}
+
+#mainNav {
+   /* margin-top: 38px;*/
+}
+
+.main-body-text {
+    margin-bottom:18px;
+}
+
+.logo {
+    margin-top: 87px;
+}
+
+#section-1 .col {
+    padding: 0px;
+}
+
+.bg-image {
+    padding-right: 45px;
+}
+
+.logo img {
+    width: 200px;
+}
+
+.top-menu {
+    display: block;
+    padding: 13px 0px;
+    /* overflow: hidden; */
+    padding: 10px 0px;
+}
+
+.top-menu ul {
+    margin: 0px;
+    padding: 0px;
+    float: right;
+}
+
+.top-menu ul li {
+    float: left;
+    list-style: none;
+    margin-right: 27px;
+}
+
+.body-text p {
+    font-size: 0.9rem;
+    text-align: left;
+    color: #333333;
+    font-weight: 400;
+    line-height: 21px;
+}
+
+.title {
+    margin: 26px 0px;
+}
+
+.title h1 {
+    font-size: 3.3rem;
+    font-weight: bold;
+    text-align: left;
+    color: #333333;
+    display: table;
+}
+
+#mainNav .nav-item a {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #333333;
+}
+
+.top-menu ul li a {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #333333;
+    text-transform: uppercase;
+}
+
+.login-btn {
+    background-color: #499a63;
+    text-align: left;
+    color: #ffffff;
+    font-size: 0.9rem;
+    padding: 10px 41px;
+    margin-top: 31px
+}
+
+/*
+.mouse-scroll {
+    position: relative;
+    bottom: 0;
+}
+
+.scroll-icon {
+    width: 24px;
+    height: 41px;
+    object-fit: contain;
+}
+*/
+
+.v-bar {
+    background-color: #fcfcfc;
+    height: 10px;
+    background-image: linear-gradient(to right, #aece56, #46b750 52%, #258366)
+}
+
+/***********/
+
+#section-2 {
+    min-height: 629px;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-image: url('../../../../assets/images/mentorshio-background.svg');
+    padding-top: 10%
+}
+
+.mentorinfo {}
+
+.mentorinfo h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.9;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333333
+}
+
+.mentorinfo p {
+    line-height: 1rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-align: left;
+    color: #333333;
+}
+
+.mentorinfo.mentorinfo-1 {
+    margin-top: 0px;
+}
+
+
+
+.mentorinfo.mentorinfo-2 {
+    margin-top: 212px;
+    margin-bottom: 43px;
+}
+
+/*********section-3***********/
+
+#section-3 {
+    min-height: 629px;
+    background-color: #fff;
+    padding: 51px;
+    padding-top: 10%
+}
+
+.objectives {
+    margin: 0 auto;
+}
+
+.cust-list-group {
+    margin: 0px;
+    padding: 0px;
+}
+
+.cust-list-item {
+    list-style: none;
+    margin: 5% 0px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.cust-list-group {
+    margin-bottom: 0px;
+}
+
+/*********section-4***********/
+
+#section-4 {
+    min-height: 629px;
+    background-color: #f4f4f4;
+    background-image: url('../../../../assets/images/goal-progresss-graphic.png');
+    background-position: center 89%;
+    background-repeat: no-repeat;
+    display: block;
+    overflow: hidden;
+    padding-top: 10%
+}
+
+.how-it-is {
+    padding: 73px;
+    margin-bottom: 103px;
+}
+
+/**************section-5*********/
+
+#section-5 {
+    min-height: 629px;
+    background-repeat: no-repeat;
+    padding-top: 10%;
+}
+
+
+.user-profile{ position: relative;}
+.user-btn { position: absolute;
+    top: 49px;
+    right: 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 134px;
+    text-align: right;}
+.user-profile-img {
+    width: 43px;
+    height: 43px;
+    border-radius: 100%;
+}
+
+.user-name {
+    width: 100%;
+    display: block;
+    font-size: 0.8rem;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: right;
+    color: #333333;
+    text-transform: capitalize;
+}
+
+.log-out-btn {
+    font-size: 0.9rem;
+    color: #107eef;
+    cursor: pointer;
+}

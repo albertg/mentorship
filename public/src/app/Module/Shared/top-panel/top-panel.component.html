@@ -1,0 +1,127 @@
+<div class="top-widget">
+  <div class="container left-side-col">
+
+          <template *ngIf="page=='admin'">
+              <div class="row">
+                  <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                      <div class="row">
+           
+                          <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 page-title profileinfo">
+                                  <h1>{{firstName |toCapitalize}} {{lastName |toCapitalize}}</h1>
+                              </div>
+                     
+                          </div>
+      
+                      </div>
+                  </div>
+                  <!-- <app-performance-progress [totalgoals]=totalgoals [completed]=completed [inprogress]=inprogress [notestarted]=notestarted
+                  [title]=title class="col-sm-12 col-md-5 col-lg-5 col-xl-5"></app-performance-progress>
+                   -->
+              </div>
+          </template>
+
+          <template *ngIf="page=='practicehead'">
+              <div class="row">
+                  <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                      <div class="row">
+
+      
+                          <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 page-title profileinfo">
+                                  <h1>{{firstName |toCapitalize}} {{lastName |toCapitalize}}</h1>
+                              </div>
+
+                          </div>
+      
+                      </div>
+                  </div>
+                  <!-- <app-performance-progress [totalgoals]=totalgoals [completed]=completed [inprogress]=inprogress [notestarted]=notestarted
+                  [title]=title class="col-sm-12 col-md-5 col-lg-5 col-xl-5"></app-performance-progress>
+                   -->
+              </div>
+          </template>
+
+          <template *ngIf="page=='mentor'" >
+              <div class="row">
+                  <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                      <div class="row">
+                          <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                              
+                              <img alt="profile" *ngIf="profileImage"  class="img-fluid em-profile" [src]="profileImage">
+                              <img alt="profile" *ngIf="profileImage== null"  class="img-fluid em-profile" src="/assets/images/profile-placeholder.jpg">
+                          </div>
+      
+                          <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 page-title profileinfo">
+                                  <h1>{{firstName |toCapitalize}} {{lastName |toCapitalize}}</h1>
+                              </div>
+                              <div class="row">
+                                  <div class="col-4 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                      <div class="col-list menteelist">
+                                        <span>{{mentees}}</span>
+                                        <span> MENTEES</span>
+                                      </div>
+                                    </div>
+                                  <div class="col-4 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                      <div class="col-list goals-details">
+                                        <span> {{totalgoals}}</span>
+                                        <span> Goals</span>
+                                      </div>
+                                    </div>
+                              </div>
+                          </div>
+      
+                      </div>
+                  </div>
+                  <app-performance-progress [totalgoals]=totalgoals [completed]=completed [inprogress]=inprogress [notestarted]=notestarted
+                  [title]=title class="col-sm-12 col-md-5 col-lg-5 col-xl-5"></app-performance-progress>
+                  
+              </div>
+          </template>
+
+          <template *ngIf="page=='mentee'">
+              <div class="row">
+                  <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                      <div class="row">
+                          <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                              
+                              <img alt="profile" *ngIf="profileImage"  class="img-fluid em-profile" [src]="profileImage">
+                              <img alt="profile" *ngIf="profileImage== null"  class="img-fluid em-profile" src="/assets/images/profile-placeholder.jpg">
+                          </div>
+      
+                          <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 page-title profileinfo">
+                                  <h1>{{firstName |toCapitalize}} {{lastName |toCapitalize}}</h1>
+                              </div>
+                              <div class="row">
+                                  <div class="col-4 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                      <div class="col-list goals-details">
+                                        <span> {{totalgoals}}</span>
+                                        <span> Goals</span>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-4 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                            <div class="col-list  discussions-box">
+                                              <span>{{discussions}}</span>
+                                              <span> Discussion</span>
+                                            </div>
+                                          </div>
+                              
+
+                                       
+                              </div>
+                          </div>
+      
+                      </div>
+                  </div>
+                  <app-performance-progress [totalgoals]=totalgoals [completed]=completed [inprogress]=inprogress [notestarted]=notestarted
+                  [title]=title class="col-sm-12 col-md-5 col-lg-5 col-xl-5"></app-performance-progress>
+                  
+              </div>
+          </template>
+
+  </div>
+</div>
+

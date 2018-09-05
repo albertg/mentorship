@@ -1,0 +1,87 @@
+/* FONTS */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,700,500italic,700italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,600italic,700,800,400italic);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,800,900,700,600,500,300,200,100);
+
+/* ======================
+   1. GENERAL SECTION
+ ====================== */
+
+* {
+    margin: 0;
+    padding: 0px;
+}
+
+body {
+    letter-spacing: 0px;
+    font-weight: normal;
+    font-family: 'Roboto', serif;
+    font-size: 13px;
+    line-height: 20px;
+    position: relative;
+    background: #bbc4be;
+    color: #656565;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+}
+
+.hidden {
+    display: none;
+}
+
+.alignleft {
+    float: left;
+}
+
+.alignright {
+    float: right;
+}
+
+.aligncenter {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    clear: both;
+}
+
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: #0a5275;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+}
+
+*:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+a img {
+    border: none;
+    vertical-align: bottom;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
+}

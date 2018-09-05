@@ -1,0 +1,138 @@
+<app-header></app-header>
+
+ <app-top-panel [page]="'mentee'" [discussions]=discussions [title]="'My Performance Progress'" [inprogress]=inprogress [notestarted]=notstarted [completed]=completed  [totalgoals]=totalgoals  [firstName]=firstName [lastName]=lastName [email]=email [profileImage]=profileImage></app-top-panel> 
+
+<!-- top widget-->
+<!-- <div class="top-widget">
+        <div class="container left-side-col">
+            <div class="row">
+                <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                            
+                            <img alt="profile" *ngIf="profileImage"  class="img-fluid em-profile" [src]="profileImage">
+                            <img alt="profile" *ngIf="profileImage== null"  class="img-fluid em-profile" src="/assets/images/profile-placeholder.jpg">
+                        </div>
+    
+                        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 page-title profileinfo">
+                                <h1>{{name}}</h1>
+                                <span class="profileinfo-email"> {{email}}</span>
+                                <span class="profileinfo-mentor">mentor: {{mentor}}</span>
+                            </div>
+                            <div class="row">
+                                
+                                <div class="col-4 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                    <div class="goals-details">
+                                        <span>{{golslist |count}}</span>
+                                        <span> Goals</span>
+                                    </div>
+                                </div>
+    
+                                <div class="col-4 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                        <div class="discussions-box">
+                                            <span>{{discussions}}</span>
+                                            <span> Discussion</span>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+                <app-performance-progress [achieved]=completed [inprogress]=inProgress [notestarted]=notstarted [totalgoals]=totalgoals [title]="'Overall Mentees Performance Progress'" class="col-sm-12 col-md-5 col-lg-5 col-xl-5"></app-performance-progress>
+      
+            </div>
+        </div>
+    </div> -->
+    
+    <!-- top widget-->
+    
+    <!--filter-->
+    <div class="sub-heading">
+        <div class="container left-side-col">
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"> <span class="sub-heading-title" > Goals</span>   </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-right">
+                    <div class="filter">
+
+                            <button class="add-goals" data-toggle="modal" data-target="#discussions"><i class="fa fa-plus" aria-hidden="true"></i> Discussion</button>
+                        <button  *ngIf="userrole=='mentor'"  data-toggle="modal" data-target="#goals" class="add-goals"> <i class="fa fa-plus" aria-hidden="true"></i>
+                            New goal</button>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end Filter-->
+    <div class="container goals-list left-side-col">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 goals-item-list" *ngFor="let listItem of golslist">
+                <div class="goals-list-items">
+                    <div class="goals-list-top">
+                        <div class="status float-left {{listItem.goalType.typeName |lowercase}}">{{listItem.goalType.typeName}}</div>
+                        <div class="post-date float-right"> Assigned on {{listItem.createdAt|dateFormat}}</div>
+                    </div>
+                    <div class="goals-list-center">
+                        <p> {{listItem.goalDescription}}</p>
+                    </div>
+                    <div class="goals-list-bottom">
+                        <!-- <div class="term float-left">
+                            <span class="period-term">{{listItem.goalType.typeName}}</span>
+                            <span class="period">Period</span>
+                        </div> -->
+                        <!-- <div class="discussions float-right">
+                            <button class="add-discussion" data-toggle="modal" data-target="#discussions"><span class="count"> 4</span> Discussion</button>
+                        </div> -->
+                        <div class="actions float-right">
+                            <button  *ngIf="userrole=='mentee' ||userrole=='mentor' " class="add-actions" (click)="addaction(listItem.actions,listItem.id )" data-toggle="modal" data-target="#actions"> <span class="count"> 
+                                
+                                {{listItem.actions | count}}
+                            </span>Actions</button>
+                            <!-- sdkfjsdlkfj sdjf-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    
+    </div>
+    
+    <div class="error-message" *ngIf="showerror"> No goals have been set  </div> 
+   
+            
+            <!-- Modal -->
+            <div class="modal right fade" id="goals" tabindex="-1" role="dialog" aria-labelledby="goals">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+         <app-goals (realoadgoals)='realoadgoal()'></app-goals>
+                            </div><!-- modal-content -->
+                </div><!-- modal-dialog -->
+            </div><!-- modal -->
+            
+    
+        <!-- Modal -->
+    <div class="modal right fade" id="discussions" tabindex="-1" role="dialog" aria-labelledby="discussions">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+ <app-discussions (realoaddisscussions)='realoadgoal()'> </app-discussions>
+                </div><!-- modal-content -->
+            </div><!-- modal-dialog -->
+        </div><!-- modal -->
+    
+            <!-- Modal -->
+    <div class="modal right fade"  id="actions" tabindex="-1" role="dialog" aria-labelledby="actions">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+  <app-actions  (refresh)='realoadgoal()' [actionList]="actionList" [goalid]="goalid"></app-actions>
+                 </div><!-- modal-content -->
+            </div><!-- modal-dialog -->
+        </div><!-- modal -->
+
+
+        
+        
+    
+    
+    

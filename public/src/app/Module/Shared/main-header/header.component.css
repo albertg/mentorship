@@ -1,0 +1,86 @@
+
+header {
+    height: 3.75rem;
+    background-color: #ffffff;
+}
+.logo{
+    padding: 5px;
+}
+.app-title{
+    font-family: Cambria;
+    float: right;
+    font-size: 1.23rem;
+    margin-top: 14px;
+    margin-right: 40px;
+    line-height: 17px;
+    color: #55bd50;
+}
+.app-title span{
+    font-size: 1rem;
+    letter-spacing: 7px;
+    display: block;
+}
+
+.user-profile-img {
+    width: 43px;
+    height: 43px;
+    border-radius: 100%;
+}
+
+.header-user {
+    margin: 8px 0px 0px 0px;
+}
+
+.user-name {
+    width: 100%;
+    display: block;
+    font-size: 0.8rem;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333333;
+    text-transform: capitalize;
+}
+
+.log-out-btn {
+    font-size: 0.8rem;
+    color: #097ef5;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.user-btn {
+    padding: 0px 0px 0px 0px;
+    width: 74%;
+}
+
+/* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+
+/* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+
+@media (min-width: 280px) and (max-width: 480px) {
+    .header-user >div{ margin: 0 auto; float: inherit !important;display:table;
+    }
+    .user-btn{ position: absolute; left: -127px; background-color: #fff; padding: 10px; width: 200px;border: 1px solid #98ca54;}
+
+}
+
+/**
+   * header banner
+   */
+
+.header-banner {
+    height: 40px;
+  mix-blend-mode: undefined;
+  background-image: linear-gradient(to right, #aece56, #46b750 52%, #258366);
+  height: 2.5rem;
+}

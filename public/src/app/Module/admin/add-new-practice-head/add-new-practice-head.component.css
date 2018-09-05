@@ -1,0 +1,190 @@
+.top-row {
+    margin-bottom: 20px;
+    display: block;
+    overflow: hidden;
+}
+
+.top-row input {
+    height: 36px;
+    border-radius: 18px;
+    background-color: #ffffff;
+    border: solid 1px #cccccc;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: italic;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #999999;
+    width: 100%;
+    margin-top: 20px
+}
+
+.mentee-list-opctions:nth-last-child(1) {
+    border: none !important;
+    ;
+}
+
+.assign-title {
+    font-size: 1rem;
+    font-weight: 700;
+    float: left;
+}
+
+.assign-title span {
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: #999999;
+    font-weight: 400;
+    display: block;
+}
+
+.top-row button {
+    width: 106px;
+    float: right;
+    height: 36px;
+    border-radius: 18px;
+    border: none;
+    color: #fff;
+    background-color: #4f7dd8;
+}
+
+.mentee-list {
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid #ccc;
+}
+
+.mentee-list li {
+    list-style: none;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    min-height: 64px;
+    border-bottom: 1px solid #ccc;
+    padding: 15px 10px;
+}
+
+.mentee-list img {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 100px;
+}
+
+.mentee-list-deatails span {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+}
+
+.col-itmes:nth-child(2) {
+    width: 80%;
+    padding-left: 10px;
+}
+
+.mentee-list-deatails span:nth-child(1) {
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333333;
+    font-weight: 700;
+}
+
+.mentee-list-deatails span:nth-child(2) {
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #999999;
+    font-weight: 400;
+}
+
+.mentee-list-deatails span {
+    margin-bottom: 5px
+}
+
+.mentee-list-checkbox {
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+
+.mentee-list-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    left: 0;
+}
+
+/* Create a custom radio button */
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid #ccc !important;
+}
+
+/* On mouse-over, add a grey background color */
+
+.mentee-list-checkbox:hover input~.checkmark {
+    border: 1px solid #ccc !important;
+}
+
+/* When the radio button is checked, add a blue background */
+
+.mentee-list-checkbox input:checked~.checkmark {
+    background-image: linear-gradient(to right, #aece56, #46b750 52%, #258366);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+
+.mentee-list-checkbox input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+
+.mentee-list-checkbox .checkmark:after {
+    top: 5.5px;
+    left: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+}

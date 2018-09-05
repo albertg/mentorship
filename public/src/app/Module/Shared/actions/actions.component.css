@@ -1,0 +1,199 @@
+.add-actions h1, .actions h1 {
+    font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.8;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333333;
+}
+
+.actions-form {
+    margin: 30px 0px 0px 0px;
+    display: block
+}
+
+.actions-btn {
+    margin-top: 10px;
+    float: right;
+    padding: 10px 34px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.actions-form input {
+    height: 40px;
+    background-color: #ffffff;
+    border: solid 1px #cccccc;
+    width: 100%;
+    margin: 10px 0px;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: italic;
+    font-stretch: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: left;
+    color: #999999;
+    padding: 10px;
+}
+
+.actions-form select {
+    height: 40px;
+    background-color: #ffffff;
+    border: solid 1px #cccccc;
+    width: 100%;
+    margin: 10px 0px;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: italic;
+    font-stretch: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: left;
+    color: #999999;
+    padding: 10px;
+}
+
+.actions-form textarea {
+    height: 120px;
+    background-color: #ffffff;
+    border: solid 1px #cccccc;
+    width: 100%;
+    margin: 10px 0px;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: italic;
+    font-stretch: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: left;
+    color: #999999;
+    padding: 10px;
+}
+
+.actions-list ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.actions-lists {
+    list-style: none;
+    padding: 10px 0px;
+    display: block;
+    min-height: 40px;
+    position: relative;
+}
+.add-actions {
+    display: block;
+    overflow: hidden;
+}
+.actions-body {
+    font-size: 0.8rem;
+    color: #867e7e;
+    float: left;
+    font-weight: 400;
+}
+
+.Completed {
+    border: solid 1px #12af19;
+    color: #12af19;
+}
+.drop-down ul li:nth-last-child(1){ border: none !important;}
+.actions {
+    display: block;
+}
+
+.actions-list {
+    display: block;
+
+}
+
+.In.Progress {
+    border: solid 1px #d3d60a;
+    color: #d3d60a;
+}
+
+.Not.Started {
+    border: solid 1px #e40505;
+    color: #e40505;
+}
+
+.action-tag {
+    /* font-size: 12px;
+    font-weight: 400;
+    color: #fff;
+    float: right;
+    clear: right;
+    padding: 2px 8px; */
+    height: 25px;
+    border-radius: 12.5px;
+    background-color: #ffffff;
+    font-weight: 400;
+    float: right;
+    font-size: 11px;
+    width: 98px;
+}
+
+.action-tag i {
+    float: right;
+    position: relative;
+    top: 3px;
+}
+
+.drop-down {
+    position: absolute;
+    right: 0px;
+    display: none;
+    width: 111px;
+    background-color: #fff;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    top: 35px;
+    z-index: 99;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+.drop-down ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.drop-down ul li {
+    font-size: 12px;
+    font-weight: 400;
+    padding: 2px 0px;
+    border-bottom: 1px solid #efeaea;
+    cursor: pointer;
+}
+
+.drop-down ul li:hover{
+    color: #ccc;
+}
+.drop-down:nth-last-child(-n+2){
+    /* bottom: 35px;  */
+}
+
+/* 
+
+.action-tag{ position: relative; font-size: 0.6rem ;cursor: pointer;}
+.action-tag:hover .drop-down{ display: block;-webkit-transition-delay: 0s, 0s, 0s;}
+.drop-down{ position: absolute;
+    display: none;
+    background: #fff;
+    color: #333333;
+    border: 1px solid #ccc;
+    z-index: 9;
+    padding: 2px;
+    width: 197px;
+    right: 1px; -webkit-transition: border-radius .1s linear, background .1s linear, z-index 0s linear;
+    -webkit-transition-delay: .8s;}
+.drop-down ul{ margin: 0px; padding: 0px;}
+.drop-down ul li{ list-style: none;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 400;
+    margin: 2px}
+ */

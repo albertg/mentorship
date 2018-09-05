@@ -1,0 +1,22 @@
+<div class="add-golas">
+
+    <h1> Assign new goal</h1>
+<div class="goals-form"> 
+    <form #goals="ngForm" (ngSubmit)="postgoal(goals.value)" class="goals">
+        <!-- <input type="date" placeholder="Goals Title"  name="title" required>-->
+
+        <div class="goals-opctions">
+
+            <select name="goalType" required ngModel>
+                <option value="" disabled selected>Choose goal term</option>
+
+                <option *ngFor="let listItem of goalstype" value="{{listItem.id}}">{{listItem.typeName}}</option>
+            </select>
+        </div>
+        <textarea rows="4" cols="50" class="goals-text-area" placeholder="Set Your Goals" name="description" ngModel required>
+</textarea>
+        <button type="submit" class="goals-btn savebtn "> Save</button>
+    </form>
+</div>
+
+</div>

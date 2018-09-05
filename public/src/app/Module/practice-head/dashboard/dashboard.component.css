@@ -1,0 +1,11 @@
+.practice-head-tab{ padding:10px;  border: transparent }
+.practice-head-tab .nav-link.active{
+   border: transparent;
+   color: #495057 !important;
+ 
+}
+.practice-head-tab .nav-link:hover{ border: transparent}
+.practice-head-tab .nav-link{ color: #ccc;  font-size: 1rem;
+   font-weight: 400; border: none;}
+
+   

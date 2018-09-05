@@ -1,0 +1,12 @@
+<div class="add-practice">
+    <!-- <div class="add-actions" > -->
+<h1>Add practice</h1>
+<div class="practice-form">                
+        <form #practice="ngForm"  (ngSubmit)="addPractice(practice.value)">
+            <input type="text" name="practicetopic" placeholder="Practice name" required ngModel> 
+            <button type="submit" class="practice-btn savebtn">  Save</button>
+        </form>
+
+
+</div>
+</div>

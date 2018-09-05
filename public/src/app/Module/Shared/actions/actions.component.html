@@ -1,0 +1,45 @@
+<div class="add-actions" *ngIf="userrole=='mentor'">
+        <!-- <div class="add-actions" > -->
+    <h1>Add Actions</h1>
+<div class="actions-form">                
+            <form #actions="ngForm"  (ngSubmit)="action(actions.value)">
+                <textarea name="discussiontopic" placeholder="ENTER  YOUR  POINTS HERE" required ngModel> </textarea>
+                <button type="submit" class="actions-btn savebtn">  Save</button>
+
+            </form>
+
+
+</div>
+</div>
+<div class="actions">
+    <h1>
+        Actions</h1>
+    <div class="actions-list">
+        <ul>
+<li class="actions-lists" *ngFor="let listItem of actionList; let i = index">
+
+        <div  class="actions-body">{{listItem.actionText}}  </div> 
+        <button *ngIf="userrole=='mentor'" disabled  class="action-tag {{listItem.actionStatus.statusName}}">{{listItem.actionStatus.statusName}}
+                <i class="fas fa-cogs"></i>
+        </button>
+        <button *ngIf="userrole=='mentee'"  (click)="showaction(i)"  class="action-tag {{listItem.actionStatus.statusName}}">{{listItem.actionStatus.statusName}}
+                <i class="fas fa-cogs"></i>
+        </button>
+        <div class="drop-down" id="drop-{{i}}">
+                <ul> 
+                    <li (click)="changeStatus(listItem.id,1)" > Not Started</li>
+                    <li (click)="changeStatus(listItem.id,2)" > In Progress</li>
+                    <li (click)="changeStatus(listItem.id,3)" > Completed</li>
+                </ul>    
+                </div> 
+        
+                                
+                            </li>
+        </ul>
+
+        <div class="error-message" *ngIf="showerror"> No actions have been defined  </div> 
+
+    </div>
+
+
+</div>

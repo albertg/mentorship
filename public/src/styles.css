@@ -1,0 +1,171 @@
+html,
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    font-size: 16px;
+    line-height: 16px
+}
+a{ text-decoration: none !important;}
+*:focus {
+    outline: none !important
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1280px !important;
+    }
+}
+
+.progress-bar-achieved,
+.label-achieved:after {
+    background: linear-gradient(to right, #258366, #46b750 52%, #aece56);
+    background: linear-gradient(#5ec050, #5ec050);
+}
+
+.progress-bar-in-progress,
+.label-in-progress:after {
+    background: linear-gradient(to right, #e2c41b, #be711e);
+    background: linear-gradient(#e5bb16, #e5bb16);
+}
+
+.progress-bar-not-started,
+.label-not-started:after {
+    background: linear-gradient(to right, #ef6f19, #e21b1b);
+    background: linear-gradient(#e85118, #e85118);
+}
+
+app-mentee-details {
+    background-color: #fafafa;
+    display: block;
+    padding-bottom: 30px;
+    height: 100%;
+}
+
+.left-side-col {
+    /*padding: 0rem 0px 0px 2.4rem;*/
+}
+
+button {
+    cursor: pointer;
+}
+.sub-heading{
+	padding-top: 19px;
+    padding-bottom: 17px;
+}
+.sub-heading-title {
+    vertical-align: bottom;
+    line-height: 36px;
+    font-weight: bold;
+    font-size: 1.17rem;
+    font-weight: 600;
+    color: #676666;
+}
+
+.savebtn{ 
+    border-radius: 18px;
+    background-color: #4f7dd8;
+    font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.14;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+.app-btn{
+    border-radius: 18px;
+    font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.14;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;    border: none;
+}
+
+
+
+/*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+* Get free snippets on bootpen.com
+*******************************/
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 410px;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+        -ms-transform: translate3d(0%, 0, 0);
+         -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal.left .modal-body,
+.modal.right .modal-body {
+    padding: 15px 15px 80px;
+}
+
+/*Left*/
+.modal.left.fade .modal-dialog{
+    left: -320px;
+    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+       -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+         -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+            transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.fade.in .modal-dialog{
+    left: 0;
+}
+    
+/*Right*/
+.modal.right.fade .modal-dialog {
+    right: 0px;
+    -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+       -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+         -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+            transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.fade.in .modal-dialog {
+    right: 0;
+}
+
+.modal-content{
+border: none;
+border-radius: 0px;
+padding: 30px;
+}
+
+template{ display: block !important;}
+
+
+
+.error-message {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 10px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
