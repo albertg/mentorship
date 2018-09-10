@@ -214,87 +214,41 @@ class EmployeeController{
     }
 
     promoteAsMentor(employeeId){
-        return new Promise((resolve, reject) => {
+        return this.setEmployeeRole(employeeId, "mentor");
+    }
+
+    promoteAsPracticeHead(employeeId){
+        return this.setEmployeeRole(employeeId, "practicehead");
+    }
+
+    promoteAsPracticeManager(employeeId){
+        return this.setEmployeeRole(employeeId, "practicemanager");
+    }
+
+    setEmployeeRole(employeeId, role){
+        return new Promise((resolve) => {
             this.db.Employee.find({
                 where: {
                     id:employeeId
-                },
-                include:[{
-                    model: this.db.Role,
-                    as: 'roles',
-                    attributes:{
-                        exclude: ['createdAt','updatedAt']
-                    },
-                    through:{
-                        model: this.db.EmployeeRoles,
-                        attributes: []
-                    }
-                }],
-                exclude: ['createdAt', 'updatedAt','mentorId']
+                }
             }).then(employee => {
                 if(employee){
-                    //employee.removeRoles(employee.roles).then(() => {
-                        this.db.Role.find({
-                            where:{
-                                roleName: 'mentor'
-                            }
-                        }).then(role => {
-                            employee.addRole(role.id).then(() => {
-                                resolve({"result":"success"});
-                            });
+                    this.db.Role.find({
+                        where:{
+                            roleName: role
+                        }
+                    }).then(appRole => {
+                        employee.addRole(appRole.id).then(() => {
+                            resolve({"result":"success"});
                         });
-                    //});                      
+                    });
                 }else{
                     reject({
                         "status":"failed",
                         "message":"User not found"
                     });
-                }            
-            });
-        });
-    }
-
-    promoteAsPracticeHead(employeeId){
-        return new Promise((resolve) => {
-            this.getMentees(employeeId).then(mentees => {
-                if(mentees !== null && mentees.length > 0){
-                    resolve({
-                        "result":"failed",
-                        "message":"Cannot promote to practice head as the user has mentees associated. Move mentees to another mentor before promoting to practice head"});
-                }else{
-                    this.db.Employee.find({
-                        where: {
-                            id:employeeId
-                        },
-                        include:[{
-                            model: this.db.Role,
-                            as: 'roles',
-                            attributes:{
-                                exclude: ['createdAt','updatedAt']
-                            },
-                            through:{
-                                model: this.db.EmployeeRoles,
-                                attributes: []
-                            }
-                        }],
-                        exclude: ['createdAt', 'updatedAt','mentorId']
-                    }).then(employee => {
-                        if(employee){
-                            //employee.removeRoles(employee.roles).then(() => {
-                                this.db.Role.find({
-                                    where:{
-                                        roleName: 'practicehead'
-                                    }
-                                }).then(role => {
-                                    employee.addRole(role.id).then(() => {
-                                        resolve({"result":"success"});
-                                    });
-                                }); 
-                            //});
-                        }
-                    });
                 }
-            });            
+            });        
         });
     }
 
@@ -482,7 +436,7 @@ class EmployeeController{
         });
     }
 
-    addEmployeeIfNotFound(employee){
+    addEmployeeIfNotFound(employee, role){
         return new Promise(resolve => {
             this.db.Employee.find({
                 where: {
@@ -499,7 +453,15 @@ class EmployeeController{
                         competency: employee.Competency,
                         gender: employee.emp_gender
                     }).then(newEmployee => {
-                        resolve(newEmployee);
+                        this.db.Role.find({
+                            where:{
+                                roleName: role
+                            }
+                        }).then(appRole => {
+                            newEmployee.addRole(appRole.id).then(() => {
+                                resolve(newEmployee);
+                            });
+                        });                        
                     });
                 }else{
                     resolve(found);

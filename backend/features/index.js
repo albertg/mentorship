@@ -3,7 +3,7 @@ var securityRoutes = require('./security/routes');
 var goalRoutes = require('./goal/routes');
 var discussionRoutes = require('./discussion/routes');
 var rcRoutes = require('./realityCheck/routes');
-var overviewRoutes = require('./integrations/routes');
+var overviewRoutes = require('./gateway/routes');
 var practiceRoutes = require('./practice/routes');
 var syncRoutes = require('./sync/routes');
 

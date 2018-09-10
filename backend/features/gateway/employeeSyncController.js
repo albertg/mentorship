@@ -9,14 +9,13 @@ var EmployeeController = require('../employee/employeeController');
 class EmployeeSyncController{
     constructor(database){
         this.db = database;
-        this.syncDirPath = __dirname + '../../sync/';
         this.buController = new BusinessUnitController(this.db);
         this.practiceController = new PracticeController(this.db);
         this.locationController = new LocationController(this.db);
         this.employeeController = new EmployeeController(this.db);
     }
 
-    syncEmployeeData(req, storage){
+    syncEmployeeData(req){
         return new Promise((resolve, reject) => {
             var that = this;
             var form = new formidable.IncomingForm();
@@ -24,20 +23,14 @@ class EmployeeSyncController{
                     var oldPath = files.syncStore.path;
                     var newPath = files.syncStore.path+'.xls';
                     fs.rename(oldPath, newPath, function (err) {
-                        if (err) reject(err);
+                        if (err){
+                            reject(err);
+                        }
                         //read the excel file
                         var workbook = XLSX.readFile(newPath);
                         var sheets = workbook.SheetNames;
                         var jsonified = XLSX.utils.sheet_to_json(workbook.Sheets[sheets[1]]);
-                        that.syncEmployees(0, that, jsonified, resolve);                        
-                        //var promiseList = [];
-                        // jsonified.forEach(item => {
-                        //     var prom = that.syncEmployee(item, that);
-                        //     promiseList.push(prom);
-                        // });
-                        // Promise.all(promiseList).then(() => {
-                        //     resolve({"status":"success","file": newPath,"contents":jsonified});
-                        // });                        
+                        that.syncEmployees(0, that, jsonified, resolve);            
                     });
             });
         });
@@ -68,27 +61,33 @@ class EmployeeSyncController{
     }
 
     syncEmployeeManager(employee, reference){
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             //associate practice head
             return reference.practiceController.addPracticeIfNotFound(employee.Practice).then(practice => {
                 reference.employeeController.getEmployee(employee['Practice Head Email']).then(ph => {
                     if(ph.status !== "failed"){
-                        practice.setPracticeHead(ph.payload.id).then(() => {
-                            //associate practice manager's practice
-                            if(employee['Practice Manager Email']){
-                                reference.employeeController.getEmployee(employee['Practice Manager Email']).then(pm => {
-                                    if(pm.status !== "failed"){
-                                        pm.payload.setManagersPractice(practice.id).then(() => {
+                        //set the user as practice head
+                        reference.employeeController.promoteAsPracticeHead(ph.payload.id).then(() => {
+                            practice.setPracticeHead(ph.payload.id).then(() => {
+                                //associate practice manager's practice
+                                if(employee['Practice Manager Email']){
+                                    reference.employeeController.getEmployee(employee['Practice Manager Email']).then(pm => {
+                                        if(pm.status !== "failed"){
+                                            //set the the user as practice manager
+                                            reference.employeeController.promoteAsPracticeManager(pm.payload.id).then(() => {
+                                                pm.payload.setManagersPractice(practice.id).then(() => {
+                                                    resolve({"status":"success"});
+                                                });
+                                            });                                            
+                                        }else{
                                             resolve({"status":"success"});
-                                        });
-                                    }else{
-                                        resolve({"status":"success"});
-                                    }
-                                });
-                            }else{
-                                resolve({"status":"success"});
-                            }
-                        });
+                                        }
+                                    });
+                                }else{
+                                    resolve({"status":"success"});
+                                }
+                            });
+                        });                        
                     }else{
                         resolve({"status":"success"});
                     }
@@ -98,7 +97,7 @@ class EmployeeSyncController{
     }
 
     syncEmployee(jsonEmployee, reference){
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             //add business unit
             return reference.buController.addBUIfNotFound(jsonEmployee.Department).then(bu => {  
                 //add practice              
@@ -108,7 +107,7 @@ class EmployeeSyncController{
                         //add location                      
                         reference.locationController.addLocationIfNotFound(jsonEmployee['Emp Location']).then(location => {
                             //add employee
-                            reference.employeeController.addEmployeeIfNotFound(jsonEmployee).then(employee => {
+                            reference.employeeController.addEmployeeIfNotFound(jsonEmployee, "mentee").then(employee => {
                                 //associate employee with location
                                 employee.setLocation(location.id).then(() => {
                                     resolve({"status":"success"});
