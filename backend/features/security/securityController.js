@@ -8,23 +8,35 @@ class SecurityController{
         this.employeeController = new EmployeeController(this.db);
     }
 
+    // authenticate(user){
+    //     return new Promise((resolve, reject) => {
+    //         this.auth.authenticate(user.email, user.pwd).then(authResponse => {
+    //             if(authResponse && authResponse.isAuthenticated){
+    //                 this.employeeController.getEmployee(authResponse.email).then(authUser => {
+    //                     if(authUser && authUser.status === 'success'){
+    //                         resolve(authUser);
+    //                     }else{
+    //                         this.employeeController.registerUser(authResponse).then(newUser => {
+    //                             resolve(newUser);                                
+    //                         });
+    //                     }
+    //                 });
+    //             }
+    //         }).catch(() => {
+    //             reject({"status":"failed","message":"Invalid credentials supplied"});
+    //         });           
+    //     });
+    // }
+
     authenticate(user){
         return new Promise((resolve, reject) => {
-            this.auth.authenticate(user.email, user.pwd).then(authResponse => {
-                if(authResponse && authResponse.isAuthenticated){
-                    this.employeeController.getEmployee(authResponse.email).then(authUser => {
-                        if(authUser && authUser.status === 'success'){
-                            resolve(authUser);
-                        }else{
-                            this.employeeController.registerUser(authResponse).then(newUser => {
-                                resolve(newUser);                                
-                            });
-                        }
-                    });
+            this.employeeController.getEmployee(user.email).then(authUser => {
+                if(authUser && authUser.status === 'success'){
+                    resolve(authUser);
                 }
             }).catch(() => {
                 reject({"status":"failed","message":"Invalid credentials supplied"});
-            });           
+            });       
         });
     }
 }

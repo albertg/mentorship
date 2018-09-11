@@ -5,7 +5,6 @@ var discussionRoutes = require('./discussion/routes');
 var rcRoutes = require('./realityCheck/routes');
 var overviewRoutes = require('./gateway/routes');
 var practiceRoutes = require('./practice/routes');
-var syncRoutes = require('./sync/routes');
 
 var registerRoutes = (app, db) => {
     "use strict";
@@ -16,7 +15,6 @@ var registerRoutes = (app, db) => {
     rcRoutes(app, db);
     overviewRoutes(app, db);
     practiceRoutes(app,db);
-    syncRoutes(app, db);
 };
 
 module.exports = registerRoutes;

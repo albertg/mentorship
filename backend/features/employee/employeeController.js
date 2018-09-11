@@ -226,7 +226,7 @@ class EmployeeController{
     }
 
     setEmployeeRole(employeeId, role){
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
             this.db.Employee.find({
                 where: {
                     id:employeeId
@@ -466,6 +466,92 @@ class EmployeeController{
                 }else{
                     resolve(found);
                 }
+            });
+        });
+    }
+
+    setPracticeManager(pmId, employeeArray){
+        var emails = [];
+        employeeArray.forEach(emp => emails.push(emp.Email));
+        return new Promise((resolve) => {
+            this.db.Employee.update({
+                practiceManagerId: pmId
+            },{
+                where: {
+                    email: emails
+                }
+            }).then(() => {
+                resolve({"status":"success"});
+            });
+        });
+    }
+
+    getMenteeInfo(menteeId){
+        return new Promise((resolve) => {
+            this.db.Employee.find({
+                where:{
+                    id: menteeId
+                },
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt','mentorId','practiceId','practiceManagerId',
+                              'locationId','LocationId','PracticeId']
+                },include:[{
+                    model: this.db.Employee,
+                    as: 'mentor',
+                    attributes:{
+                        exclude: ['createdAt','updatedAt','mentorId','practiceId']
+                    }
+                },{
+                    model: this.db.Employee,
+                    as: 'PracticeManager',
+                    attributes:{
+                        exclude: ['createdAt','updatedAt','mentorId','practiceId','practiceManagerId',
+                                  'competency','locationId','employeeId','LocationId','PracticeId']
+                    },include:[{
+                        model: this.db.Practice,
+                        as: 'ManagersPractice',
+                        attributes:{
+                            exclude: ['createdAt','updatedAt','id','practiceHeadId','BusinessUnitId']
+                        }
+                    }]
+                }]
+            }).then(mentee => {
+                resolve(mentee);
+            });
+        });
+    }
+
+    getPracticeManagerInfo(pmId){
+        return new Promise((resolve) => {
+            this.db.Employee.find({
+                where:{
+                    id: pmId
+                },
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt','mentorId','practiceId','practiceManagerId',
+                              'locationId','LocationId','PracticeId']
+                },include:[{
+                    model: this.db.Employee,
+                    as: 'mentor',
+                    attributes:{
+                        exclude: ['createdAt','updatedAt','mentorId','practiceId']
+                    }
+                },{
+                    model: this.db.Employee,
+                    as: 'PracticeManager',
+                    attributes:{
+                        exclude: ['createdAt','updatedAt','mentorId','practiceId','practiceManagerId',
+                                  'competency','locationId','employeeId','LocationId','PracticeId']
+                    },include:[{
+                        model: this.db.Practice,
+                        as: 'ManagersPractice',
+                        attributes:{
+                            exclude: ['createdAt','updatedAt','id','practiceHeadId','BusinessUnitId']
+                        }
+                    }]
+                }]
+            }).then(mentee => {
+                resolve(mentee);
             });
         });
     }

@@ -51,7 +51,7 @@ class EmployeeSyncController{
 
     syncEmployeeManagers(index, reference, employeeArray, callback){
         if(index < employeeArray.length ){
-            reference.syncEmployeeManager(employeeArray[index], reference).then(() => {
+            reference.syncEmployeeManager(employeeArray[index], reference, employeeArray).then(() => {
                 index = index + 1;
                 reference.syncEmployeeManagers(index, reference, employeeArray, callback);
             });
@@ -60,23 +60,29 @@ class EmployeeSyncController{
         }
     }
 
-    syncEmployeeManager(employee, reference){
+    syncEmployeeManager(employee, reference, employeeArray){
         return new Promise((resolve) => {
             //associate practice head
             return reference.practiceController.addPracticeIfNotFound(employee.Practice).then(practice => {
                 reference.employeeController.getEmployee(employee['Practice Head Email']).then(ph => {
                     if(ph.status !== "failed"){
-                        //set the user as practice head
+                        //assign the user the role of practice head
                         reference.employeeController.promoteAsPracticeHead(ph.payload.id).then(() => {
                             practice.setPracticeHead(ph.payload.id).then(() => {
                                 //associate practice manager's practice
                                 if(employee['Practice Manager Email']){
                                     reference.employeeController.getEmployee(employee['Practice Manager Email']).then(pm => {
                                         if(pm.status !== "failed"){
-                                            //set the the user as practice manager
+                                            //assign the user the role of practice manager
                                             reference.employeeController.promoteAsPracticeManager(pm.payload.id).then(() => {
                                                 pm.payload.setManagersPractice(practice.id).then(() => {
-                                                    resolve({"status":"success"});
+                                                    //set this user as practice manager for the designated users
+                                                    var pmReportees = employeeArray.filter(emp => emp['Practice Manager Email'] === employee['Practice Manager Email']);
+                                                    if(pmReportees && pmReportees.length > 0){
+                                                        reference.employeeController.setPracticeManager(pm.payload.id, pmReportees).then(() => {
+                                                            resolve({"status":"success"});
+                                                        });
+                                                    }                                                    
                                                 });
                                             });                                            
                                         }else{

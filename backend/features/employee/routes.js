@@ -123,6 +123,15 @@ const employeeRoutes = (app, db) => {
             res.status(500).json(err);
         });
     });
+
+    app.route('/api/mentee/:menteeId/details')
+    .get((req, res) => {
+        controller.getMenteeInfo(req.params.menteeId).then(response => {
+            res.json(response);
+        }).catch(err => {
+            res.status(500).json(err);
+        });
+    });
 };
 
 module.exports = employeeRoutes;
