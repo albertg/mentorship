@@ -485,8 +485,7 @@ class EmployeeController{
             });
         });
     }
-
-    //NEW SET OF API's TO BE USED    
+        
     getMenteeInfo(menteeId){
         return new Promise((resolve) => {
             this.db.Employee.find({

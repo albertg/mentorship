@@ -124,6 +124,7 @@ const employeeRoutes = (app, db) => {
         });
     });
 
+    //NEW SET OF API's TO BE USED
     app.route('/api/mentee/:menteeId/info')
     .get((req, res) => {
         controller.getMenteeInfo(req.params.menteeId).then(response => {
