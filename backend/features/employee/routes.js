@@ -150,6 +150,24 @@ const employeeRoutes = (app, db) => {
             res.status(500).json(err);
         });
     });
+
+    app.route('/api/practicehead/:phId/info')
+    .get((req, res) => {
+        controller.getPracticeHeadInfo(req.params.phId).then(response => {
+            res.json(response);
+        }).catch(err => {
+            res.status(500).json(err);
+        });
+    });
+
+    app.route('/api/practicehead/:phId/details')
+    .get((req, res) => {
+        controller.getPracticeHeadDetails(req.params.phId).then(response => {
+            res.json(response);
+        }).catch(err => {
+            res.status(500).json(err);
+        });
+    });
 };
 
 module.exports = employeeRoutes;

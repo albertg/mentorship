@@ -486,6 +486,7 @@ class EmployeeController{
         });
     }
 
+    //NEW SET OF API's TO BE USED    
     getMenteeInfo(menteeId){
         return new Promise((resolve) => {
             this.db.Employee.find({
@@ -550,8 +551,8 @@ class EmployeeController{
                         }
                     }]
                 }]
-            }).then(mentee => {
-                resolve(mentee);
+            }).then(pm => {
+                resolve(pm);
             });
         });
     }
@@ -579,8 +580,80 @@ class EmployeeController{
                         }
                     }]
                 }]
-            }).then(mentee => {
-                resolve(mentee);
+            }).then(pm => {
+                resolve(pm);
+            });
+        });
+    }
+
+    getPracticeHeadInfo(phId){
+        return new Promise((resolve) => {
+            this.db.Employee.find({
+                where:{
+                    id: phId
+                },
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt','mentorId','practiceId','practiceManagerId',
+                              'locationId','LocationId','PracticeId']
+                },include:[{
+                    model: this.db.Practice,
+                    as: 'practice',
+                    attributes:{
+                        exclude: ['createdAt','updatedAt','practiceHeadId','BusinessUnitId']
+                    },include:[{
+                        model: this.db.BusinessUnit,
+                        as: 'BusinessUnit',
+                        attributes:{
+                            exclude: ['createdAt','updatedAt']
+                        }
+                    }]
+                }]
+            }).then(ph => {
+                resolve(ph);
+            });
+        });
+    }
+
+    getPracticeHeadDetails(phId){
+        return new Promise((resolve) => {
+            this.db.Employee.find({
+                where:{
+                    id: phId
+                },
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt','mentorId','practiceId','practiceManagerId',
+                              'locationId','LocationId','PracticeId']
+                },include:[{
+                    model: this.db.Practice,
+                    as: 'practice',
+                    attributes:{
+                        exclude:['createdAt', 'updatedAt','practiceHeadId','BusinessUnitId']
+                    },
+                    include:[{
+                        model:this.db.Employee,
+                        as: 'PracticeManagers',
+                        attributes:{
+                            exclude:['createdAt', 'updatedAt','practiceManagerId',
+                            'practiceId','locationId','PracticeId','LocationId']
+                        },
+                        include:[{
+                            model: this.db.Location,
+                            as: 'Location',
+                            attributes:{
+                                exclude:['id','createdAt', 'updatedAt']
+                            }
+                        }]
+                    }]
+                }]
+            }).then(ph => {
+                //Remove the reference to the practice head from the PracticeManagers array as the 
+                //practice head also belongs to the practice
+                var phObject = ph.practice.PracticeManagers.find(pm => pm.id === parseInt(phId));
+                var indexOfPh = ph.practice.PracticeManagers.indexOf(phObject);
+                if(indexOfPh >= 0){
+                    ph.practice.PracticeManagers.splice(indexOfPh, 1);
+                }
+                resolve(ph);
             });
         });
     }
