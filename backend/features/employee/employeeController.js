@@ -531,22 +531,51 @@ class EmployeeController{
                     exclude: ['createdAt', 'updatedAt','mentorId','practiceId','practiceManagerId',
                               'locationId','LocationId','PracticeId']
                 },include:[{
-                    model: this.db.Employee,
-                    as: 'mentor',
+                    model: this.db.Practice,
+                    as: 'practice',
                     attributes:{
-                        exclude: ['createdAt','updatedAt','mentorId','practiceId']
-                    }
-                },{
-                    model: this.db.Employee,
-                    as: 'PracticeManager',
-                    attributes:{
-                        exclude: ['createdAt','updatedAt','mentorId','practiceId','practiceManagerId',
-                                  'competency','locationId','employeeId','LocationId','PracticeId']
+                        exclude: ['createdAt','updatedAt','practiceHeadId','BusinessUnitId']
                     },include:[{
-                        model: this.db.Practice,
-                        as: 'ManagersPractice',
+                        model: this.db.Employee,
+                        as: 'practiceHead',
                         attributes:{
-                            exclude: ['createdAt','updatedAt','id','practiceHeadId','BusinessUnitId']
+                            exclude: ['createdAt','updatedAt','mentorId','employeeId','practiceManagerId',
+                                      'competency','locationId','gender','practiceId','LocationId','PracticeId']
+                        }
+                    },{
+                        model: this.db.BusinessUnit,
+                        as: 'BusinessUnit',
+                        attributes:{
+                            exclude: ['createdAt','updatedAt']
+                        }
+                    }]
+                }]
+            }).then(mentee => {
+                resolve(mentee);
+            });
+        });
+    }
+
+    getPracticeManagerDetails(pmId){
+        return new Promise((resolve) => {
+            this.db.Employee.find({
+                where:{
+                    id: pmId
+                },
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt','mentorId','practiceId','practiceManagerId',
+                              'locationId','LocationId','PracticeId']
+                },include:[{
+                    model: this.db.Employee,
+                    as: 'PracticeManagerReportees',
+                    attributes:{
+                        exclude: ['createdAt','updatedAt','employeeId','practiceManagerId','locationId','gender',
+                                  'practiceId','PracticeId','LocationId']
+                    },include: [{
+                        model: this.db.Location,
+                        as: 'Location',
+                        attributes:{
+                            exclude: ['createdAt','updatedAt','id']
                         }
                     }]
                 }]

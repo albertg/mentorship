@@ -124,9 +124,27 @@ const employeeRoutes = (app, db) => {
         });
     });
 
-    app.route('/api/mentee/:menteeId/details')
+    app.route('/api/mentee/:menteeId/info')
     .get((req, res) => {
         controller.getMenteeInfo(req.params.menteeId).then(response => {
+            res.json(response);
+        }).catch(err => {
+            res.status(500).json(err);
+        });
+    });
+
+    app.route('/api/practicemanager/:pmId/info')
+    .get((req, res) => {
+        controller.getPracticeManagerInfo(req.params.pmId).then(response => {
+            res.json(response);
+        }).catch(err => {
+            res.status(500).json(err);
+        });
+    });
+
+    app.route('/api/practicemanager/:pmId/details')
+    .get((req, res) => {
+        controller.getPracticeManagerDetails(req.params.pmId).then(response => {
             res.json(response);
         }).catch(err => {
             res.status(500).json(err);
