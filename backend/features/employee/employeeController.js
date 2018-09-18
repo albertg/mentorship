@@ -656,6 +656,26 @@ class EmployeeController{
             });
         });
     }
+
+    getPracticeManagersOfAPractice(practiceId){
+        return new Promise(resolve => {
+            this.db.Practice.find({
+                where:{
+                    id: practiceId
+                },
+                include:[{
+                    model:this.db.Employee,
+                    as: 'PracticeManagers',
+                    attributes:{
+                        exclude:['createdAt', 'updatedAt','practiceManagerId',
+                        'practiceId','locationId','PracticeId','LocationId']
+                    }
+                }]
+            }).then(practice => {
+                resolve(practice.PracticeManagers);
+            });
+        });
+    }
 }
 
 module.exports = EmployeeController;

@@ -30,6 +30,15 @@ const practiceRoutes = (app, db) => {
             res.status(500).json(err);
         });
     });
+
+    app.route('/api/practice/bu/:buId')
+    .get((req, res) => {
+        practiceController.getPracticesOfABu(req.params.buId).then(response => {
+            res.json(response);
+        }).catch(err => {
+            res.status(500).json(err);
+        });
+    });
 };
 
 module.exports = practiceRoutes;

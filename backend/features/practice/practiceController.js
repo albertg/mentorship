@@ -157,10 +157,31 @@ class PracticeController{
                         name: practiceName
                     }).then(newPractice => {
                         resolve(newPractice);
-                    })
+                    });
                 }else{
                     resolve(found);
                 }
+            });
+        });
+    }
+
+    getPracticesOfABu(buId){
+        return new Promise(resolve => {
+            this.db.Practice.findAll({
+                where:{
+                    businessUnitId: buId
+                },attributes: {
+                    exclude: ['createdAt', 'updatedAt','BusinessUnitId']
+                },include:[{
+                    model: this.db.Employee,
+                    as: 'practiceHead',
+                    attributes: {
+                        exclude: ['mentorId', 'employeeId','practiceManagerId','competency','locationId',
+                                  'gender','createdAt','updatedAt','practiceId','LocationId','PracticeId']
+                    }
+                }]
+            }).then(practices => {
+                resolve(practices);
             })
         });
     }

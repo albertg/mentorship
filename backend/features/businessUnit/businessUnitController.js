@@ -15,12 +15,24 @@ class BusinessUnitController{
                         name: buName
                     }).then(newBu => {
                         resolve(newBu);
-                    })
+                    });
                 }else{
                     resolve(found);
                 }
             });
         });        
+    }
+
+    getAllBusinessUnits(){
+        return new Promise((resolve) => {
+            this.db.BusinessUnit.findAll({
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt']
+                }
+            }).then(buList => {
+                resolve(buList);
+            });
+        });
     }
 }
 

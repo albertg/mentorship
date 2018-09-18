@@ -169,6 +169,15 @@ const employeeRoutes = (app, db) => {
             res.status(500).json(err);
         });
     });
+
+    app.route('/api/employee/practice/:practiceId/pm')
+    .get((req, res) => {
+        controller.getPracticeManagersOfAPractice(req.params.practiceId).then(response => {
+            res.json(response);
+        }).catch(err => {
+            res.status(500).json(err);
+        });
+    });
 };
 
 module.exports = employeeRoutes;
