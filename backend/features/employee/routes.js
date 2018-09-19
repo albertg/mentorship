@@ -134,6 +134,15 @@ const employeeRoutes = (app, db) => {
         });
     });
 
+    app.route('/api/mentor/:mentorId/info')
+    .get((req, res) => {
+        controller.getMentorInfo(req.params.mentorId).then(response => {
+            res.json(response);
+        }).catch(err => {
+            res.status(500).json(err);
+        });
+    });
+
     app.route('/api/practicemanager/:pmId/info')
     .get((req, res) => {
         controller.getPracticeManagerInfo(req.params.pmId).then(response => {
@@ -146,33 +155,6 @@ const employeeRoutes = (app, db) => {
     app.route('/api/practicemanager/:pmId/details')
     .get((req, res) => {
         controller.getPracticeManagerDetails(req.params.pmId).then(response => {
-            res.json(response);
-        }).catch(err => {
-            res.status(500).json(err);
-        });
-    });
-
-    app.route('/api/practicehead/:phId/info')
-    .get((req, res) => {
-        controller.getPracticeHeadInfo(req.params.phId).then(response => {
-            res.json(response);
-        }).catch(err => {
-            res.status(500).json(err);
-        });
-    });
-
-    app.route('/api/practicehead/:phId/details')
-    .get((req, res) => {
-        controller.getPracticeHeadDetails(req.params.phId).then(response => {
-            res.json(response);
-        }).catch(err => {
-            res.status(500).json(err);
-        });
-    });
-
-    app.route('/api/employee/practice/:practiceId/pm')
-    .get((req, res) => {
-        controller.getPracticeManagersOfAPractice(req.params.practiceId).then(response => {
             res.json(response);
         }).catch(err => {
             res.status(500).json(err);

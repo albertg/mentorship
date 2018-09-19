@@ -26,7 +26,8 @@ class EmployeeController{
                     model: this.db.Employee,
                     as: 'mentees',
                     attributes:{
-                        exclude: ['createdAt','updatedAt','mentorId']
+                        exclude: ['createdAt','updatedAt','employeeId','practiceManagerId','locationId','gender',
+                                  'practiceId','PracticeId','LocationId']
                     }
                 }],
                 exclude: ['createdAt', 'updatedAt','mentorId']
@@ -577,102 +578,55 @@ class EmployeeController{
                         attributes:{
                             exclude: ['createdAt','updatedAt','id']
                         }
+                    },{
+                        model: this.db.Role,
+                        as: 'roles',
+                        attributes:{
+                            exclude: ['createdAt','updatedAt']
+                        },
+                        through:{
+                            model: this.db.EmployeeRoles,
+                            attributes: []
+                        }                    
                     }]
                 }]
             }).then(pm => {
-                resolve(pm);
+                var mentorList = [];
+                var menteeList = [];
+                pm.PracticeManagerReportees.forEach(reportee => {
+                    var isMentor = reportee.roles.find(role => role.roleName === "mentor");
+                    if(isMentor){
+                        mentorList.push(reportee);
+                    }else{
+                        menteeList.push(reportee);
+                    }
+                });
+                //resolve(pm.PracticeManagerReportees);
+                resolve({mentors: mentorList, mentees: menteeList});
             });
         });
     }
 
-    getPracticeHeadInfo(phId){
-        return new Promise((resolve) => {
-            this.db.Employee.find({
-                where:{
-                    id: phId
-                },
-                attributes: {
-                    exclude: ['createdAt', 'updatedAt','mentorId','practiceId','practiceManagerId',
-                              'locationId','LocationId','PracticeId']
-                },include:[{
-                    model: this.db.Practice,
-                    as: 'practice',
-                    attributes:{
-                        exclude: ['createdAt','updatedAt','practiceHeadId','BusinessUnitId']
-                    },include:[{
-                        model: this.db.BusinessUnit,
-                        as: 'BusinessUnit',
-                        attributes:{
-                            exclude: ['createdAt','updatedAt']
-                        }
-                    }]
-                }]
-            }).then(ph => {
-                resolve(ph);
-            });
-        });
-    }
-
-    getPracticeHeadDetails(phId){
-        return new Promise((resolve) => {
-            this.db.Employee.find({
-                where:{
-                    id: phId
-                },
-                attributes: {
-                    exclude: ['createdAt', 'updatedAt','mentorId','practiceId','practiceManagerId',
-                              'locationId','LocationId','PracticeId']
-                },include:[{
-                    model: this.db.Practice,
-                    as: 'practice',
-                    attributes:{
-                        exclude:['createdAt', 'updatedAt','practiceHeadId','BusinessUnitId']
-                    },
-                    include:[{
-                        model:this.db.Employee,
-                        as: 'PracticeManagers',
-                        attributes:{
-                            exclude:['createdAt', 'updatedAt','practiceManagerId',
-                            'practiceId','locationId','PracticeId','LocationId']
-                        },
-                        include:[{
-                            model: this.db.Location,
-                            as: 'Location',
-                            attributes:{
-                                exclude:['id','createdAt', 'updatedAt']
-                            }
-                        }]
-                    }]
-                }]
-            }).then(ph => {
-                //Remove the reference to the practice head from the PracticeManagers array as the 
-                //practice head also belongs to the practice
-                var phObject = ph.practice.PracticeManagers.find(pm => pm.id === parseInt(phId));
-                var indexOfPh = ph.practice.PracticeManagers.indexOf(phObject);
-                if(indexOfPh >= 0){
-                    ph.practice.PracticeManagers.splice(indexOfPh, 1);
-                }
-                resolve(ph);
-            });
-        });
-    }
-
-    getPracticeManagersOfAPractice(practiceId){
+    getMentorInfo(mentorId){
         return new Promise(resolve => {
-            this.db.Practice.find({
-                where:{
-                    id: practiceId
+            this.db.Employee.find({
+                where: {
+                    id: mentorId
+                },
+                attributes:{
+                    exclude: ['createdAt','updatedAt','employeeId','practiceManagerId','locationId','gender',
+                              'practiceId','PracticeId','LocationId']
                 },
                 include:[{
-                    model:this.db.Employee,
-                    as: 'PracticeManagers',
+                    model: this.db.Employee,
+                    as: 'PracticeManager',
                     attributes:{
-                        exclude:['createdAt', 'updatedAt','practiceManagerId',
-                        'practiceId','locationId','PracticeId','LocationId']
+                        exclude: ['createdAt','updatedAt','employeeId','practiceManagerId','locationId','gender',
+                                  'practiceId','PracticeId','LocationId']
                     }
                 }]
-            }).then(practice => {
-                resolve(practice.PracticeManagers);
+            }).then(mentor => {
+                resolve(mentor);
             });
         });
     }

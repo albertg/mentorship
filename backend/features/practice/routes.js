@@ -39,6 +39,24 @@ const practiceRoutes = (app, db) => {
             res.status(500).json(err);
         });
     });
+
+    app.route('/api/practice/:practiceId/info')
+    .get((req, res) => {
+        practiceController.getPracticeInfo(req.params.practiceId).then(response => {
+            res.json(response);
+        }).catch(err => {
+            res.status(500).json(err);
+        });
+    });
+
+    app.route('/api/practice/:practiceId/details')
+    .get((req, res) => {
+        practiceController.getPracticeDetails(req.params.practiceId).then(response => {
+            res.json(response);
+        }).catch(err => {
+            res.status(500).json(err);
+        });
+    });
 };
 
 module.exports = practiceRoutes;

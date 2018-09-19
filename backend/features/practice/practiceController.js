@@ -182,7 +182,78 @@ class PracticeController{
                 }]
             }).then(practices => {
                 resolve(practices);
-            })
+            });
+        });
+    }
+
+    getPracticeInfo(practiceId){
+        return new Promise((resolve) => {
+            this.db.Practice.find({
+                where:{
+                    id: practiceId
+                },
+                attributes:{
+                    exclude: ['createdAt','updatedAt','practiceHeadId','BusinessUnitId']
+                },
+                include:[{
+                    model: this.db.Employee,
+                    as:'practiceHead',
+                    attributes: {
+                        exclude: ['createdAt', 'updatedAt','mentorId','practiceId','practiceManagerId',
+                                  'locationId','LocationId','PracticeId']
+                    }
+                },{
+                    model: this.db.BusinessUnit,
+                    as: 'BusinessUnit',
+                    attributes:{
+                        exclude: ['createdAt','updatedAt']
+                    }
+                }]
+            }).then(practice => {
+                resolve(practice);
+            });
+        });
+    }
+
+    getPracticeDetails(practiceId){
+        return new Promise((resolve) => {
+            this.db.Practice.find({
+                where:{
+                    id: practiceId
+                },
+                attributes:{
+                    exclude:['createdAt', 'updatedAt','practiceHeadId','BusinessUnitId']
+                },
+                include:[{
+                    model: this.db.Employee,
+                    as: 'PracticeManagers',
+                    attributes:{
+                        exclude:['createdAt', 'updatedAt','practiceManagerId',
+                        'practiceId','locationId','PracticeId','LocationId']
+                    }
+                },{
+                    model: this.db.Employee,
+                    as: 'practiceHead',
+                    attributes: {
+                        exclude: ['createdAt', 'updatedAt','mentorId','practiceId','practiceManagerId',
+                                  'locationId','LocationId','PracticeId']
+                    }
+                }]
+            }).then(practice => {
+                //Remove the reference to the practice head from the PracticeManagers array as the 
+                //practice head also belongs to the practice
+                var phObject = practice.PracticeManagers.find(pm => pm.id === parseInt(practice.practiceHead.id));
+                var indexOfPh = practice.PracticeManagers.indexOf(phObject);
+                if(indexOfPh >= 0){
+                    practice.PracticeManagers.splice(indexOfPh, 1);
+                }
+                var result = {
+                    id: practice.id,
+                    name: practice.name,
+                    PracticeManagers: practice.PracticeManagers
+                };
+                resolve(result);
+            });
         });
     }
 }
