@@ -256,6 +256,21 @@ class PracticeController{
             });
         });
     }
+
+    getPracticesOfAHead(phId){
+        return new Promise(resolve => {
+            this.db.Practice.findAll({
+                where:{
+                    practiceHeadId: phId
+                },
+                attributes:{
+                    exclude:['practiceHeadId','createdAt','updatedAt','BusinessUnitId']
+                }
+            }).then(practices => {
+                resolve(practices);
+            });
+        });
+    }
 }
 
 module.exports = PracticeController;

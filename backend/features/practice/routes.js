@@ -57,6 +57,15 @@ const practiceRoutes = (app, db) => {
             res.status(500).json(err);
         });
     });
+
+    app.route('/api/practicehead/:phId')
+    .get((req, res) => {
+        practiceController.getPracticesOfAHead(req.params.phId).then(response => {
+            res.json(response);
+        }).catch(err => {
+            res.status(500).json(err);
+        });
+    });
 };
 
 module.exports = practiceRoutes;
