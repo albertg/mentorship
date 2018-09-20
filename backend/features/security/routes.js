@@ -8,6 +8,7 @@ const securityRoutes = (app, db) =>{
        .post((req, res) => {
            controller.authenticate(req.body)
                 .then(employee => {
+                    req.session.user = employee;
                     res.json(employee);
                 })
                 .catch(err => {
