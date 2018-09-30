@@ -179,9 +179,31 @@ class PracticeController{
                         exclude: ['mentorId', 'employeeId','practiceManagerId','competency','locationId',
                                   'gender','createdAt','updatedAt','practiceId','LocationId','PracticeId']
                     }
+                },{
+                    model: this.db.Employee,
+                    as: 'PracticeManagers',
+                    include: [{
+                        model: this.db.Employee,
+                        as: 'PracticeManagerReportees'
+                    }]
                 }]
             }).then(practices => {
-                resolve(practices);
+                var allPractices = [];
+                practices.forEach(practice => {
+                    var practiceMemberCount = 0;
+                    practice.PracticeManagers.forEach(manager => {
+                        practiceMemberCount = practiceMemberCount + manager.PracticeManagerReportees.length;
+                    });
+                    var practiceInfo = {
+                        id: practice.id,
+                        name: practice.name,
+                        practiceHead: practice.practiceHead,
+                        practiceManagers: practice.PracticeManagers.length,
+                        practiceMembers: practiceMemberCount
+                    };
+                    allPractices.push(practiceInfo);
+                });
+                resolve(allPractices);
             });
         });
     }
