@@ -28,9 +28,22 @@ class BusinessUnitController{
             this.db.BusinessUnit.findAll({
                 attributes: {
                     exclude: ['createdAt', 'updatedAt']
-                }
+                },
+                include:[{
+                    model: this.db.Practice,
+                    as: 'Practices'
+                }]
             }).then(buList => {
-                resolve(buList);
+                var listOfBu = [];
+                buList.forEach(bu => {
+                    var buInfo = {
+                        id: bu.id,
+                        name: bu.name,
+                        practices: bu.Practices.length
+                    };
+                    listOfBu.push(buInfo);
+                });
+                resolve(listOfBu);
             });
         });
     }
