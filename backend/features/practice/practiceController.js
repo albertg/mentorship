@@ -264,11 +264,11 @@ class PracticeController{
             }).then(practice => {
                 //Remove the reference to the practice head from the PracticeManagers array as the 
                 //practice head also belongs to the practice
-                var phObject = practice.PracticeManagers.find(pm => pm.id === parseInt(practice.practiceHead.id));
-                var indexOfPh = practice.PracticeManagers.indexOf(phObject);
-                if(indexOfPh >= 0){
-                    practice.PracticeManagers.splice(indexOfPh, 1);
-                }
+                // var phObject = practice.PracticeManagers.find(pm => pm.id === parseInt(practice.practiceHead.id));
+                // var indexOfPh = practice.PracticeManagers.indexOf(phObject);
+                // if(indexOfPh >= 0){
+                //     practice.PracticeManagers.splice(indexOfPh, 1);
+                // }
                 var result = {
                     id: practice.id,
                     name: practice.name,
