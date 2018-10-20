@@ -252,7 +252,15 @@ class PracticeController{
                     attributes:{
                         exclude:['createdAt', 'updatedAt','practiceManagerId',
                         'practiceId','locationId','PracticeId','LocationId']
-                    }
+                    },
+                    include:[{
+                        model: this.db.Employee,
+                        as: 'PracticeManagerReportees',
+                        attributes:{
+                            exclude:['createdAt', 'updatedAt','practiceManagerId',
+                            'practiceId','locationId','PracticeId','LocationId']
+                        }
+                    }]
                 },{
                     model: this.db.Employee,
                     as: 'practiceHead',
@@ -269,10 +277,28 @@ class PracticeController{
                 // if(indexOfPh >= 0){
                 //     practice.PracticeManagers.splice(indexOfPh, 1);
                 // }
+                var userCount = 0;
+                var pms = [];
+                practice.PracticeManagers.forEach(pm => {
+                    userCount = userCount + pm.PracticeManagerReportees.length;
+                    var manager = {
+                        id: pm.id,
+                        firstName: pm.firstName,
+                        lastName: pm.lastName,
+                        email: pm.email,
+                        profileImage: pm.profileImage,
+                        employeeId: pm.employeeId,
+                        competency: pm.competency,
+                        title: pm.title,
+                        gender: pm.gender
+                    };
+                    pms.push(manager);
+                });
                 var result = {
                     id: practice.id,
                     name: practice.name,
-                    PracticeManagers: practice.PracticeManagers
+                    PracticeManagers: pms,
+                    practiceMembersCount: userCount
                 };
                 resolve(result);
             });
